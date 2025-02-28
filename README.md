@@ -1,57 +1,81 @@
 
 # Command & Conquer Generals (inc. Zero Hour) Source Code
 
-This repository includes source code for Command & Conquer Generals, and its expansion pack Zero Hour. This release provides support to the Steam Workshop for both games ([C&C Generals](https://steamcommunity.com/workshop/browse/?appid=2229870) and [C&C Generals - Zero Hour](https://steamcommunity.com/workshop/browse/?appid=2732960)).
+This branch is focused getting the original code to compile with Visual C++ 6.0 with minimal changes.  Currently focusing efforts on the `GeneralsMD` directory.
+
+## Projects Currently Building:
+
+- [x] Benchmark
+- [x] Compression
+- [x] EABrowserDispatch
+- [x] GameEngine
+- [ ] GameEngineDevice
+- [ ] RTS
+- [ ] (many more)
 
 
-## Dependencies
+## HOWTO
 
-If you wish to rebuild the source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;
-
-- DirectX SDK (Version 9.0 or higher) (expected path `\Code\Libraries\DirectX\`)
-- STLport (4.5.3) - (expected path `\Code\Libraries\STLport-4.5.3`)
-- 3DSMax 4 SDK - (expected path `\Code\Libraries\Max4SDK\`)
-- NVASM - (expected path `\Code\Tools\NVASM\`)
-- BYTEmark - (expected path `\Code\Libraries\Source\Benchmark`)
-- RAD Miles Sound System SDK - (expected path `\Code\Libraries\Source\WWVegas\Miles6\`)
-- RAD Bink SDK - (expected path `\Code\GameEngineDevice\Include\VideoDevice\Bink`)
-- SafeDisk API - (expected path `\Code\GameEngine\Include\Common\SafeDisk` and `\Code\Tools\Launcher\SafeDisk\`)
-- Miles Sound System "Asimp3" - (expected path `\Code\Libraries\WPAudio\Asimp3`)
-- GameSpy SDK - (expected path `\Code\Libraries\Source\GameSpy\`)
-- ZLib (1.1.4) - (expected path `\Code\Libraries\Source\Compression\ZLib\`)
-- LZH-Light (1.0) - (expected path `\Code\Libraries\Source\Compression\LZHCompress\CompLibSource` and `CompLibHeader`)
+This section logs the steps taken to get to this point on Windows 10 Professional.
 
 
-## Compiling (Win32 Only)
+### Git on Windows Tip
 
-To use the compiled binaries, you must own the game. The C&C Ultimate Collection is available for purchase on [EA App](https://www.ea.com/en-gb/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc) or [Steam](https://store.steampowered.com/bundle/39394/Command__Conquer_The_Ultimate_Collection/).
+My initial Git configuration had all line endings converted to `LF`, but that messes up the VC++6 project files when cloning them down (since all of the `CR`s are stripped).  Changing my config to the following alleviated this.
 
-The quickest way to build all configurations in the project is to open `rts.dsw` in Microsoft Visual Studio C++ 6.0 (SP6 recommended for binary matching to Generals patch 1.08 and Zero Hour patch 1.04) and select Build -> Batch Build, then hit the “Rebuild All” button.
-
-If you wish to compile the code under a modern version of Microsoft Visual Studio, you can convert the legacy project file to a modern MSVC solution by opening `rts.dsw` in Microsoft Visual Studio .NET 2003, and then opening the newly created project and solution file in MSVC 2015 or newer.
-
-NOTE: As modern versions of MSVC enforce newer revisions of the C++ standard, you will need to make extensive changes to the codebase before it successfully compiles, even more so if you plan on compiling for the Win64 platform.
-
-When the workspace has finished building, the compiled binaries will be copied to the folder called `/Run/` found in the root of each games directory. 
+```
+[core]
+    autocrlf = true
+```
 
 
-## Known Issues
+### Installing Visual C++ 6.0
 
-Windows has a policy where executables that contain words “version”, “update” or “install” in their filename will require UAC Elevation to run. This will affect “versionUpdate” and “buildVersionUpdate” projects from running as post-build events. Renaming the output binary name for these projects to not include these words should resolve the issue for you.
+These instructions to [Install Visual Studio 6.0 on Windows 10](https://www.codeproject.com/Articles/1191047/Install-Visual-Studio-6-0-on-Windows-10) were helpful.  I just had the Visual C++ 6.0 ISO instead of the full Visual Studio.
 
-
-## STLport
-STLport will require changes to successfully compile this source code. The file [stlport.diff](stlport.diff) has been provided for you so you can review and apply these changes. Please make sure you are using STLport 4.5.3 before attempting to apply the patch.
+For service pack 6, acquire `Vs6sp6.exe` (mine had a SHA256 of `7fa1d1778824b55a5fceb02f45c399b5d4e4dce7403661e67e587b5f455edbf3`).
 
 
-## Contributing
+### Benchmark Library Source
 
-This repository will not be accepting contributions (pull requests, issues, etc). If you wish to create changes to the source code and encourage collaboration, please create a fork of the repository under your GitHub user/organization space.
+Download the BYTEmark beta source from the [BYTE Benchmarks](https://www.math.utah.edu/~mayer/linux/byte/index.html) page and place the contents in `\Code\Libraries\Source\Benchmark`.
 
 
-## Support
+### Compression Library Sources
 
-This repository is for preservation purposes only and is archived without support. 
+Download ZLib 1.1.4 from the [ZLib Fossils](https://www.zlib.net/fossils/) page and place the contents in `\Code\Libraries\Source\Compression\ZLib\`.
+
+Download the LZHL files from the [rFactorTools](https://github.com/Grumbel/rfactortools/tree/master/other/quickbms/src/libs/lzhl) project and place the contents in `\Code\Libraries\Source\Compression\LZHCompress\CompLibSource` and `CompLibHeader`.
+
+In the LZHL source, add this line to the top of `lzhl_tcp.cpp` to suppress the debug info warning:
+```
+#pragma warning(disable: 4786)  // don't warn about debug info truncation
+```
+
+
+### STLPort
+
+Download 4.5.3 here [STLport-4.5.3.tar.gz](http://www.stlport.org/archive/STLport-4.5.3.tar.gz).
+
+Place the contents of `stlport` in `\Code\Libraries\STLport-4.5.3`.
+
+In that directory, run the following to patch the files:
+```
+patch -p0 < ../../../../../stlport.diff
+```
+
+
+### GameSpy
+
+Download the `src/GameSpy` directory from the [GameSpy](https://github.com/nitrocaster/GameSpy/tree/master/src/GameSpy) project and place it in `\Code\Libraries\Source\GameSpy\`.
+
+
+### GameEngine Project Settings
+
+**NOTE:** these changes are committed in this branch
+
+- added ` /I "..\Libraries\Source\STLport-4.5.3" ` to the build settings
+- excluded the `Source Files\GameNetwork\GameSpy` directory from the build
 
 
 ## License
