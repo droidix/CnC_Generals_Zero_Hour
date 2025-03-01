@@ -82,7 +82,7 @@ Place `nvasm.exe` from [The Wayback Machine](https://web.archive.org/web/2006100
 
 ### Stub Libraries for Bink and Miles
 
-Get `.c` and `.h` files created by OmniBlade from [This Github Repo](https://github.com/jmacato/CnC_Generals_Zero_Hour/tree/main/Dependencies) and in `\Code\Libraries\Source\Stubs\Bink\` and ``Code\Libraries\Source\Stubs\Miles\`
+Get `.c` and `.h` files created by OmniBlade from [This Github Repo](https://github.com/jmacato/CnC_Generals_Zero_Hour/tree/main/Dependencies) and place in `\Code\Libraries\Source\Stubs\Bink\` and `Code\Libraries\Source\Stubs\Miles\`
 
 Change third parameter of this function from the Miles stub from from int to long:
 ```
