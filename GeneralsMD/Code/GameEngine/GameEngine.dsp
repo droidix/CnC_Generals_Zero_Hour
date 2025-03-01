@@ -67,7 +67,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /G6 /MDd /W3 /WX /Gm /GX /ZI /Od /I "..\Libraries\Source\STLport-4.5.3" /I "..\Libraries\Source\WWVegas" /I "..\Libraries\Source\WWVegas\WWLib" /I "Include/Precompiled" /I "../Libraries/Source/WWVegas" /I "../Libraries/Source/WWVegas\WWLib" /I "Include" /I "../Libraries/Include" /I "../Libraries/Source/GameSpy" /I "../Libraries/Source/Compression" /D "_DEBUG" /D "BROWSER_DEBUG" /D "_MBCS" /D "_LIB" /D "_WINDOWS" /D "WIN32" /D "Z_PREFIX" /Yu"PreRTS.h" /FD /GZ /c
+# ADD CPP /nologo /G6 /MDd /W3 /WX /Gm /GX /ZI /Od /I "..\Libraries\Source\STLport-4.5.3" /I "..\Libraries\DirectX\Include" /I "..\Libraries\Source\WWVegas" /I "..\Libraries\Source\WWVegas\WWLib" /I "Include/Precompiled" /I "../Libraries/Source/WWVegas" /I "../Libraries/Source/WWVegas\WWLib" /I "Include" /I "../Libraries/Include" /I "../Libraries/Source/GameSpy" /I "../Libraries/Source/Compression" /D "_DEBUG" /D "BROWSER_DEBUG" /D "_MBCS" /D "_LIB" /D "_WINDOWS" /D "WIN32" /D "Z_PREFIX" /Yu"PreRTS.h" /FD /GZ /c
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
 # ADD RSC /l 0x409 /d "_DEBUG"
 BSC32=bscmake.exe

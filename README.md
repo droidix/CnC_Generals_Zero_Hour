@@ -9,7 +9,7 @@ This branch is focused getting the original code to compile with Visual C++ 6.0 
 - [x] Compression
 - [x] EABrowserDispatch
 - [x] GameEngine
-- [ ] GameEngineDevice
+- [x] GameEngineDevice
 - [ ] RTS
 - [ ] (many more)
 
@@ -70,12 +70,51 @@ patch -p0 < ../../../../../stlport.diff
 Download the `src/GameSpy` directory from the [GameSpy](https://github.com/nitrocaster/GameSpy/tree/master/src/GameSpy) project and place it in `\Code\Libraries\Source\GameSpy\`.
 
 
-### GameEngine Project Settings
+### DirectX 9
 
-**NOTE:** these changes are committed in this branch
+An older version of DirectX SDK is needed that includes the full set of DirectX 8 headers.  Download the windows executable option from [Archive.org](https://archive.org/details/dx9sdk).  Extract the contents to a directory of your choosing, and then copy the `Lib` and `Include` directories to `\Code\Libraries\DirectX`.
+
+
+### NVAsm
+
+Place `nvasm.exe` from [The Wayback Machine](https://web.archive.org/web/20061006093538/http://developer.nvidia.com/object/nvasm.html) in `\Code\Tools\NVASM\`.
+
+
+### Stub Libraries for Bink and Miles
+
+Get `.c` and `.h` files created by OmniBlade from [This Github Repo](https://github.com/jmacato/CnC_Generals_Zero_Hour/tree/main/Dependencies) and in `\Code\Libraries\Source\Stubs\Bink\` and ``Code\Libraries\Source\Stubs\Miles\`
+
+Change third parameter of this function from the Miles stub from from int to long:
+```
+int __stdcall AIL_decompress_ADPCM(const AILSOUNDINFO *info, void **outdata, unsigned int *outsize)
+```
+
+### Building a Project
+
+Right-click the project and select the "Build" option.
+
+
+## Changes Included in This Branch
+
+### (Multiple Projects, Where Applicable)
 
 - added ` /I "..\Libraries\Source\STLport-4.5.3" ` to the build settings
+- added ` /I "..\Libraries\DirectX\Include" ` to the build settings
+- added ` /I "..\Libraries\Source\Stubs\Bink" ` to the build settings
+- added ` /I "..\Libraries\Source\Stubs\Miles" ` to the build settings
+- removed ` /I "..\Libraries\Include\MSS" ` from the build settings
+
+
+### GameEngine
+
 - excluded the `Source Files\GameNetwork\GameSpy` directory from the build
+
+
+### GameEngineDevice
+
+- use stub libraries for Bink and Miles
+- disable call to `AIL_MSS_version()`
+- define `u32` in `BinkVideoPlayer.cpp`
 
 
 ## License

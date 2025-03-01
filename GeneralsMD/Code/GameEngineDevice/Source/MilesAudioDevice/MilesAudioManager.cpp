@@ -135,7 +135,8 @@ void MilesAudioManager::audioDebugDisplay(DebugDisplayInterface *dd, void *, FIL
 
 	static char buffer[128] = { 0 };
 	if (buffer[0] == 0) {
-		AIL_MSS_version(buffer, 128);
+		// disable due to stub library
+		// AIL_MSS_version(buffer, 128);
 	}
 	
 	Coord3D lookPos;
