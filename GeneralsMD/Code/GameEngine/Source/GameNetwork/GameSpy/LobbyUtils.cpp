@@ -437,6 +437,7 @@ typedef std::set<GameSpyStagingRoom *> BuddyGameSet;
 static BuddyGameSet *theBuddyGames = NULL;
 static void populateBuddyGames(void)
 {
+#ifndef GAMESPY_DISABLED
 	BuddyInfoMap *m = TheGameSpyInfo->getBuddyMap();
 	theBuddyGames = NEW BuddyGameSet;
 	if (!m)
@@ -462,6 +463,7 @@ static void populateBuddyGames(void)
 			}
 		}
 	}
+#endif // GAMESPY_DISABLED
 }
 
 static void clearBuddyGames(void)

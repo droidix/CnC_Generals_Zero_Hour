@@ -31,7 +31,11 @@
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
 #include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
 
-#include "GameSpy/peer/peer.h"
+#ifdef GAMESPY_DISABLED
+	#include "GameNetwork/GameSpy/GSDisabledTypes.h"
+#else
+	#include "GameSpy/peer/peer.h"
+#endif
 
 #include "Common/QuotedPrintable.h"
 #include "Common/UserPreferences.h"

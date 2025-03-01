@@ -31,7 +31,11 @@
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
 #include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
 
-#include "GameSpy/peer/peer.h"
+#ifdef GAMESPY_DISABLED
+	#include "GameNetwork/GameSpy/GSDisabledTypes.h"
+#else
+	#include "GameSpy/peer/peer.h"
+#endif
 
 #include "Common/GameEngine.h"
 #include "Common/GameSpyMiscPreferences.h"
@@ -330,6 +334,7 @@ static const char* FindNextNumber( const char* pStart )
 //parse win/loss stats received from GameSpy
 void HandleOverallStats( const char* szHTTPStats, unsigned len )
 {
+#ifndef GAMESPY_DISABLED
 //x	DEBUG_LOG(("Parsing win percent stats:\n%s\n", szHTTPStats));
 	//find today's stats
 	const char* pToday = strstr( szHTTPStats, "Today" );
@@ -370,6 +375,8 @@ void HandleOverallStats( const char* szHTTPStats, unsigned len )
 		s_winStats.insert(std::make_pair( side, percent ));
 //x		DEBUG_LOG(("Added win percent: %s, %d\n", side.str(), percent));
 	} //for i
+
+#endif // GAMESPY_DISABLED
 } //HandleOverallStats
 
 

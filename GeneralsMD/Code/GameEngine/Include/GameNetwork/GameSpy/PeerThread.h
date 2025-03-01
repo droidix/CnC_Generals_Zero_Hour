@@ -31,8 +31,13 @@
 #ifndef __PEERTHREAD_H__
 #define __PEERTHREAD_H__
 
-#include "GameSpy/Peer/Peer.h"
-#include "GameNetwork/NetworkDefs.h"
+#ifdef GAMESPY_DISABLED
+	#include "GSDisabledTypes.h"
+	#define MAX_SLOTS 8
+#else
+	#include "GameSpy/Peer/Peer.h"
+	#include "GameNetwork/NetworkDefs.h"
+#endif
 
 enum SerialAuthResult
 {

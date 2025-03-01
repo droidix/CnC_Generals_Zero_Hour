@@ -31,9 +31,11 @@
 #ifndef __BUDDYTHREAD_H__
 #define __BUDDYTHREAD_H__
 
-#include "GameSpy/GP/GP.h"
-
-#define MAX_BUDDY_CHAT_LEN 128
+#ifdef GAMESPY_DISABLED
+	#include "GSDisabledTypes.h"
+#else
+	#include "GameSpy/GP/GP.h"
+#endif
 
 // this class encapsulates a request for the buddy thread
 class BuddyRequest

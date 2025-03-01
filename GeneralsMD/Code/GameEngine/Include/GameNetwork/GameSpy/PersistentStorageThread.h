@@ -31,9 +31,15 @@
 #ifndef __PERSISTENTSTORAGETHREAD_H__
 #define __PERSISTENTSTORAGETHREAD_H__
 
-#include "GameSpy/gstats/gpersist.h"
+#ifdef GAMESPY_DISABLED
+	#include "GSDisabledTypes.h"
+#else
+	#include "GameSpy/gstats/gpersist.h"
+#endif
 
-#define MAX_BUDDY_CHAT_LEN 128
+#ifndef MAX_BUDDY_CHAT_LEN
+	#define MAX_BUDDY_CHAT_LEN 128
+#endif
 
 typedef std::map<Int, UnsignedInt> PerGeneralMap;
 // this structure holds all info on a player that is stored online

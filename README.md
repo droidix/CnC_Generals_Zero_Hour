@@ -65,11 +65,6 @@ patch -p0 < ../../../../../stlport.diff
 ```
 
 
-### GameSpy
-
-Download the `src/GameSpy` directory from the [GameSpy](https://github.com/nitrocaster/GameSpy/tree/master/src/GameSpy) project and place it in `\Code\Libraries\Source\GameSpy\`.
-
-
 ### DirectX 9
 
 An older version of DirectX SDK is needed that includes the full set of DirectX 8 headers.  Download the windows executable option from [Archive.org](https://archive.org/details/dx9sdk).  Extract the contents to a directory of your choosing, and then copy the `Lib` and `Include` directories to `\Code\Libraries\DirectX`.
@@ -107,7 +102,7 @@ Right-click the project and select the "Build" option.
 
 ### GameEngine
 
-- excluded the `Source Files\GameNetwork\GameSpy` directory from the build
+- introduced the `GAMESPY_DISABLED` preprocessor define to disable code that uses the GameSpy SDK
 
 
 ### GameEngineDevice

@@ -39,6 +39,7 @@
 #include "Common/RandomValue.h"
 #include "Common/SkirmishBattleHonors.h"
 #include "Common/SkirmishPreferences.h"
+#include "Common/Registry.h"
 #include "GameLogic/GameLogic.h"
 #include "GameClient/AnimateWindowManager.h"
 #include "GameClient/WindowLayout.h"
@@ -1351,7 +1352,7 @@ void SkirmishGameOptionsMenuInit( WindowLayout *layout, void *userData )
 	TheSkirmishGameInfo->setSeed(GetTickCount());
 
 	UnsignedInt isPreorder = 0;
-	GetUnsignedIntFromRegistry("", "Preorder", isPreorder);
+	GetUnsignedIntFromRegistry(AsciiString(""), AsciiString("Preorder"), isPreorder);
 	if (isPreorder != 0)
 	{
 		TheSkirmishGameInfo->markPlayerAsPreorder(0);
@@ -2158,7 +2159,7 @@ void populateSkirmishBattleHonors(void)
 	*/
 
 	UnsignedInt isPreorder = 0;
-	GetUnsignedIntFromRegistry("", "Preorder", isPreorder);
+	GetUnsignedIntFromRegistry(AsciiString(""), AsciiString("Preorder"), isPreorder);
 	if (isPreorder != 0)
 	{
 		InsertBattleHonor(list, TheMappedImageCollection->findImageByName("OfficersClub"), TRUE,

@@ -36,6 +36,7 @@
 //#include "Common/Registry.h"
 #include "Common/UserPreferences.h"
 #include "Common/Version.h"
+#include "Common/Registry.h"
 #include "GameClient/GameText.h"
 #include "GameClient/MessageBox.h"
 #include "GameClient/Shell.h"
@@ -43,7 +44,9 @@
 
 #include "GameClient/ShellHooks.h"
 
-#include "GameSpy/ghttp/ghttp.h"
+#ifndef GAMESPY_DISABLED
+	#include "GameSpy/ghttp/ghttp.h"
+#endif // GAMESPY_DISABLED
 
 #include "GameNetwork/DownloadManager.h"
 #include "GameNetwork/GameSpy/BuddyThread.h"
@@ -163,12 +166,12 @@ static Bool hasWriteAccess()
 	remove(filename);
 	
 	unsigned int val;
-	if (!GetUnsignedIntFromRegistry("", "Version", val))
+	if (!GetUnsignedIntFromRegistry(AsciiString(""), AsciiString("Version"), val))
 	{
 		return false;
 	}
 
-	if (!SetUnsignedIntInRegistry("", "Version", val))
+	if (!SetUnsignedIntInRegistry(AsciiString(""), AsciiString("Version"), val))
 	{
 		return false;
 	}
@@ -314,6 +317,8 @@ static void queuePatch(Bool mandatory, AsciiString downloadURL)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
+
+#ifndef GAMESPY_DISABLED
 
 static GHTTPBool motdCallback( GHTTPRequest request, GHTTPResult result,
 															char * buffer, int bufferLen, void * param )
@@ -564,6 +569,8 @@ static GHTTPBool gamePatchCheckCallback( GHTTPRequest request, GHTTPResult resul
 	return GHTTPTrue;
 }
 
+#endif // GAMESPY_DISABLED
+
 ///////////////////////////////////////////////////////////////////////////////////////
 
 void CancelPatchCheckCallbackAndReopenDropdown( void )
@@ -597,6 +604,9 @@ void CancelPatchCheckCallback( void )
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
+
+#ifndef GAMESPY_DISABLED
+
 
 static GHTTPBool overallStatsCallback( GHTTPRequest request, GHTTPResult result, char * buffer, int bufferLen, void * param )
 {
@@ -637,20 +647,26 @@ static GHTTPBool numPlayersOnlineCallback( GHTTPRequest request, GHTTPResult res
 	return GHTTPTrue;
 }
 
+#endif // GAMESPY_DISABLED
+
 ///////////////////////////////////////////////////////////////////////////////////////
 
 void CheckOverallStats( void )
 {
+#ifndef GAMESPY_DISABLED
 	ghttpGet("http://gamestats.gamespy.com/ccgenzh/display.html",
 		GHTTPFalse, overallStatsCallback, NULL);
+#endif // GAMESPY_DISABLED
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
 void CheckNumPlayersOnline( void )
 {
+#ifndef GAMESPY_DISABLED
 	ghttpGet("http://launch.gamespyarcade.com/software/launch/arcadecount2.dll?svcname=ccgenzh",
 		GHTTPFalse, numPlayersOnlineCallback, NULL);
+#endif // GAMESPY_DISABLED
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -715,6 +731,7 @@ static Bool isHttpOk = TRUE;
 
 void HTTPThinkWrapper( void )
 {
+#ifndef GAMESPY_DISABLED
 	if (s_asyncDNSLookupInProgress)
 	{
 		Int ret = asyncGethostbyname("servserv.generals.ea.com");
@@ -743,6 +760,7 @@ void HTTPThinkWrapper( void )
 												// check, we'll time out normally.
 		}
 	}
+#endif // GAMESPY_DISABLED
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -791,6 +809,7 @@ void StartPatchCheck( void )
 
 static void reallyStartPatchCheck( void )
 {
+#ifndef GAMESPY_DISABLED
 	checksLeftBeforeOnline = 4;
 
 	std::string gameURL, mapURL;
@@ -822,6 +841,8 @@ static void reallyStartPatchCheck( void )
 
 	// check the users online
 	CheckNumPlayersOnline();
+#endif // GAMESPY_DISABLED
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////

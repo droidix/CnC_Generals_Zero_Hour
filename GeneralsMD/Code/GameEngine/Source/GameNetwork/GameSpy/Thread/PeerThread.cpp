@@ -405,6 +405,7 @@ void PeerThreadClass::clearPlayerStats(RoomType roomType)
 
 void PeerThreadClass::pushStatsToRoom(PEER peer)
 {
+#ifndef GAMESPY_DISABLED
 	DEBUG_LOG(("PeerThreadClass::pushStatsToRoom(): stats are %s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s\n",
 		s_keys[0], s_values[0],
 		s_keys[1], s_values[1],
@@ -414,12 +415,15 @@ void PeerThreadClass::pushStatsToRoom(PEER peer)
 		s_keys[5], s_values[5]));
 	peerSetRoomKeys(peer, GroupRoom, m_loginName.c_str(), 6, s_keys, s_values);
 	peerSetRoomKeys(peer, StagingRoom, m_loginName.c_str(), 6, s_keys, s_values);
+#endif // GAMESPY_DISABLED
 }
 
 void getRoomKeysCallback(PEER peer, PEERBool success, RoomType roomType, const char *nick, int num, char **keys, char **values, void *param);
 void PeerThreadClass::getStatsFromRoom(PEER peer, RoomType roomType)
 {
+#ifndef GAMESPY_DISABLED
 	peerGetRoomKeys(peer, GroupRoom, "*", NumKeys, s_keys, getRoomKeysCallback, this, PEERFalse);
+#endif // GAMESPY_DISABLED
 }
 #endif // USE_BROADCAST_KEYS
 
@@ -452,6 +456,9 @@ void PeerThreadClass::clearServers( void )
 
 SBServer PeerThreadClass::findServerByID( Int id )
 {
+#ifdef GAMESPY_DISABLED
+    return 0;
+#else
 	std::map<Int, SBServer>::iterator it = m_stagingServers.find(id);
 	if (it != m_stagingServers.end())
 	{
@@ -464,10 +471,14 @@ SBServer PeerThreadClass::findServerByID( Int id )
 		return it->second;
 	}
 	return 0;
+#endif // GAMESPY_DISABLED
 }
 
 Int PeerThreadClass::findServer( SBServer server )
 {
+#ifdef GAMESPY_DISABLED
+    return 0;
+#else
 	char tmp[10] = "";
 	const char *newName = SBServerGetStringValue(server, "gamename", tmp);
 	UnsignedInt newPrivateIP = SBServerGetPrivateInetAddress(server);
@@ -511,6 +522,7 @@ Int PeerThreadClass::findServer( SBServer server )
 	}
 
 	return addServerToMap(server);
+#endif // GAMESPY_DISABLED
 }
 
 static enum CallbackType
@@ -651,6 +663,7 @@ PeerThreadClass* GameSpyPeerMessageQueue::getThread( void )
 }
 
 //-------------------------------------------------------------------------
+#ifndef GAMESPY_DISABLED
 static void disconnectedCallback(PEER peer, const char * reason, void * param);
 static void roomMessageCallback(PEER peer, RoomType roomType, const char * nick, const char * message, MessageType messageType, void * param);
 static void playerMessageCallback(PEER peer, const char * nick, const char * message, MessageType messageType, void * param);
@@ -665,10 +678,12 @@ static void playerUTMCallback(PEER peer, const char * nick, const char * command
 static void gameStartedCallback(PEER peer, UnsignedInt IP, const char *message, void *param);
 static void globalKeyChangedCallback(PEER peer, const char *nick, const char *key, const char *val, void *param);
 static void roomKeyChangedCallback(PEER peer, RoomType roomType, const char *nick, const char *key, const char *val, void *param);
+#endif // GAMESPY_DISABLED
 
 // convenience function to set buddy status
 static void updateBuddyStatus( GameSpyBuddyStatus status, Int groupRoom = 0, std::string gameName = "" )
 {
+#ifndef GAMESPY_DISABLED
 	if (!TheGameSpyBuddyMessageQueue)
 		return;
 
@@ -714,7 +729,11 @@ static void updateBuddyStatus( GameSpyBuddyStatus status, Int groupRoom = 0, std
 	}
 	DEBUG_LOG(("updateBuddyStatus %d:%s\n", req.arg.status.status, req.arg.status.statusString));
 	TheGameSpyBuddyMessageQueue->addRequest(req);
+#endif // GAMESPY_DISABLED
 }
+
+
+#ifndef GAMESPY_DISABLED
 
 static void createRoomCallback(PEER peer, PEERBool success, PEERJoinResult result, RoomType roomType, void *param)
 {
@@ -1016,8 +1035,11 @@ static int QRCountCallback
 	return 0;
 }
 
+#endif // GAMESPY_DISABLED
+
 void PeerThreadClass::stopHostingAlready(PEER peer)
 {
+#ifndef GAMESPY_DISABLED
 	isThreadHosting = 0; // debugging
 	s_lastStateChangedHeartbeat = 0;
 	s_wantStateChangedHeartbeat = FALSE;
@@ -1027,7 +1049,10 @@ void PeerThreadClass::stopHostingAlready(PEER peer)
 		closesocket(qr2Sock);
 		qr2Sock = INVALID_SOCKET;
 	}
+#endif // GAMESPY_DISABLED
 }
+
+#ifndef GAMESPY_DISABLED
 
 static void QRAddErrorCallback
 (
@@ -1135,9 +1160,12 @@ static SerialAuthResult doCDKeyAuthentication( PEER peer )
 	return retval;
 }
 
+#endif // GAMESPY_DISABLED
+
 #define INBUF_LEN 256
 void checkQR2Queries( PEER peer, SOCKET sock )
 {
+#ifndef GAMESPY_DISABLED
 	static char indata[INBUF_LEN];
 	struct sockaddr_in saddr;
 	int saddrlen = sizeof(struct sockaddr_in);
@@ -1161,12 +1189,14 @@ void checkQR2Queries( PEER peer, SOCKET sock )
 			peerParseQuery( peer, indata, error, (sockaddr *)&saddr );
 		}
 	}
+#endif // GAMESPY_DISABLED
 }
 
 static UnsignedInt localIP = 0;
 
 void PeerThreadClass::Thread_Function()
 {
+#ifndef GAMESPY_DISABLED
 	try {
 	_set_se_translator( DumpExceptionInfo ); // Hook that allows stack trace.
 
@@ -1781,7 +1811,10 @@ void PeerThreadClass::Thread_Function()
 		{
 		}
 	}
+#endif // GAMESPY_DISABLED
 }
+
+#ifndef GAMESPY_DISABLED
 
 static void qmProfileIDCallback( PEER peer, PEERBool success, const char *nick, int profileID, void *param )
 {
@@ -1819,6 +1852,8 @@ void quickmatchEnumPlayersCallback( PEER peer, PEERBool success, RoomType roomTy
 	TheGameSpyPeerMessageQueue->addResponse(resp);
 }
 
+#endif // GAMESPY_DISABLED
+
 void PeerThreadClass::handleQMMatch(PEER peer, Int mapIndex, Int seed,
 																		char *playerName[MAX_SLOTS],
 																		char *playerIP[MAX_SLOTS],
@@ -1826,6 +1861,7 @@ void PeerThreadClass::handleQMMatch(PEER peer, Int mapIndex, Int seed,
 																		char *playerColor[MAX_SLOTS],
 																		char *playerNAT[MAX_SLOTS])
 {
+#ifndef GAMESPY_DISABLED
 	if (m_qmStatus == QM_WORKING)
 	{
 		m_qmStatus = QM_MATCHED;
@@ -1865,10 +1901,12 @@ void PeerThreadClass::handleQMMatch(PEER peer, Int mapIndex, Int seed,
 		resp.qmStatus.mapIdx = mapIndex;
 		TheGameSpyPeerMessageQueue->addResponse(resp);
 	}
+#endif // GAMESPY_DISABLED
 }
 
 void PeerThreadClass::doQuickMatch( PEER peer )
 {
+#ifndef GAMESPY_DISABLED
 	m_qmStatus = QM_JOININGQMCHANNEL;
 	Bool done = false;
 	matchbotProfileID = m_qmInfo.QM.botID;
@@ -2089,7 +2127,10 @@ void PeerThreadClass::doQuickMatch( PEER peer )
 		}
 	}
 	updateBuddyStatus( BUDDY_ONLINE );
+#endif // GAMESPY_DISABLED
 }
+
+#ifndef GAMESPY_DISABLED
 
 static void getPlayerProfileIDCallback(PEER peer,  PEERBool success,  const char * nick,  int profileID,  void * param)
 {
@@ -2246,8 +2287,12 @@ static void listGroupRoomsCallback(PEER peer, PEERBool success,
 	}
 }
 
+#endif // GAMESPY_DISABLED
+
 void PeerThreadClass::connectCallback( PEER peer, PEERBool success )
 {
+#ifndef GAMESPY_DISABLED
+
 	PeerResponse resp;
 	if(!success)
 	{
@@ -2288,10 +2333,13 @@ void PeerThreadClass::connectCallback( PEER peer, PEERBool success )
 	DEBUG_LOG(("After peerListGroupRooms()\n"));
 	CheckServers(peer);
 #endif // SERVER_DEBUGGING
+
+#endif // GAMESPY_DISABLED
 }
 
 void PeerThreadClass::nickErrorCallback( PEER peer, Int type, const char *nick )
 {
+#ifndef GAMESPY_DISABLED
 	if(type == PEER_IN_USE)
 	{
 		Int len = strlen(nick);
@@ -2338,7 +2386,10 @@ void PeerThreadClass::nickErrorCallback( PEER peer, Int type, const char *nick )
 		// Cancel the connect.
 		peerRetryWithNick(peer, NULL);
 	}
+#endif // GAMESPY_DISABLED
 }
+
+#ifndef GAMESPY_DISABLED
 
 void disconnectedCallback(PEER peer, const char * reason, void * param)
 {
@@ -2980,6 +3031,8 @@ static void listingGamesCallback(PEER peer, PEERBool success, const char * name,
 
 	TheGameSpyPeerMessageQueue->addResponse(resp);
 }
+
+#endif // GAMESPY_DISABLED
 
 //-------------------------------------------------------------------------
 

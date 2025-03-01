@@ -1126,8 +1126,10 @@ void HandlePersistentStorageResponses( void )
 				{
 					if (resp.preorder)
 					{
+#ifndef GAMESPY_DISABLED
 						SetUnsignedIntInRegistry("", "Preorder", 1);
 						TheGameSpyInfo->markPlayerAsPreorder( TheGameSpyInfo->getLocalProfileID() );
+#endif // GAMESPY_DISABLED
 
 						// force an update of our shtuff
 						PSResponse newResp;

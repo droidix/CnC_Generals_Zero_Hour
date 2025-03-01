@@ -119,6 +119,9 @@ Color GameSpyColor[GSCOLOR_MAX] =
 
 Bool GameSpyInfo::sendChat( UnicodeString message, Bool isAction, GameWindow *playerListbox )
 {
+#ifdef GAMESPY_DISABLED
+    return false;
+#else
 	static UnicodeString s_prevMsg = UnicodeString::TheEmptyString;  //stop spam before it happens
 
 	RoomType roomType = StagingRoom;
@@ -199,10 +202,12 @@ Bool GameSpyInfo::sendChat( UnicodeString message, Bool isAction, GameWindow *pl
 	}
 	s_prevMsg = message;
 	return false;
+#endif // GAMESPY_DISABLED
 }
 
 void GameSpyInfo::addChat( AsciiString nick, Int profileID, UnicodeString msg, Bool isPublic, Bool isAction, GameWindow *win )
 {
+#ifndef GAMESPY_DISABLED
 	PlayerInfoMap::iterator it = getPlayerInfoMap()->find(nick);
 	if (it != getPlayerInfoMap()->end())
 	{
@@ -211,10 +216,12 @@ void GameSpyInfo::addChat( AsciiString nick, Int profileID, UnicodeString msg, B
 	else
 	{
 	}
+#endif // GAMESPY_DISABLED
 }
 
 void GameSpyInfo::addChat( PlayerInfo p, UnicodeString msg, Bool isPublic, Bool isAction, GameWindow *win )
 {
+#ifndef GAMESPY_DISABLED
 	Int style;
 	if(isSavedIgnored(p.m_profileID) || isIgnored(p.m_name))
 		return;
@@ -310,10 +317,14 @@ void GameSpyInfo::addChat( PlayerInfo p, UnicodeString msg, Bool isPublic, Bool 
 	{
 		GadgetListBoxSetItemData(win, (void *)p.m_profileID, index);
 	}
+#endif // GAMESPY_DISABLED
 }
 
 Int GameSpyInfo::addText( UnicodeString message, Color c, GameWindow *win )
 {
+#ifdef GAMESPY_DISABLED
+    return -1;
+#else
 	if (TheGameSpyGame && TheGameSpyGame->isInGame() && TheGameSpyGame->isGameInProgress())
 	{
 		static AudioEventRTS messageFromChatSound("GUIMessageReceived");
@@ -334,6 +345,7 @@ Int GameSpyInfo::addText( UnicodeString message, Color c, GameWindow *win )
 	GadgetListBoxSetItemData(win, (void *)-1, index);
 
 	return index;
+#endif // GAMESPY_DISABLED
 }
 
 void GameSpyInfo::registerTextWindow( GameWindow *win )

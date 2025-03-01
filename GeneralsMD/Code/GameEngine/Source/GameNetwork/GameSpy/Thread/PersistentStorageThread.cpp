@@ -583,6 +583,9 @@ PSPlayerStats GameSpyPSMessageQueue::findPlayerStatsByID( Int id )
 
 Bool PSThreadClass::tryConnect( void )
 {
+#ifdef GAMESPY_DISABLED
+	return true;
+#else
 	Int result;
 
 	DEBUG_LOG(("m_opCount = %d - opening connection\n", m_opCount));
@@ -603,6 +606,7 @@ Bool PSThreadClass::tryConnect( void )
 	}
 
 	return true;
+#endif // GAMESPY_DISABLED
 }
 
 static void persAuthCallback(int localid, int profileid, int authenticated, char *errmsg, void *instance)
@@ -615,6 +619,9 @@ static void persAuthCallback(int localid, int profileid, int authenticated, char
 
 Bool PSThreadClass::tryLogin( Int id, std::string nick, std::string password, std::string email )
 {
+#ifdef GAMESPY_DISABLED
+    return false;
+#else
 	char validate[33];
 	DEBUG_LOG(("PSThreadClass::tryLogin id = %d, nick = %s, password = %s, email = %s\n", id, nick.c_str(), password.c_str(), email.c_str()));
 	/***********
@@ -644,10 +651,12 @@ Bool PSThreadClass::tryLogin( Int id, std::string nick, std::string password, st
 		PersistThink();
 	DEBUG_LOG(("Persistant Storage Login success %d\n", m_loginOK));
 	return m_loginOK;
+#endif // GAMESPY_DISABLED
 }
 
 static void getPersistentDataCallback(int localid, int profileid, persisttype_t type, int index, int success, char *data, int len, void *instance)
 {
+#ifndef GAMESPY_DISABLED
 	DEBUG_LOG(("Data get callback: localid: %d profileid: %d success: %d len: %d data: %s\n",localid, profileid, success, len, data));
 	PSThreadClass *t = (PSThreadClass *)instance;
 	if (!t)
@@ -736,6 +745,7 @@ static void getPersistentDataCallback(int localid, int profileid, persisttype_t 
 	resp.player.id = profileid;
 
 	TheGameSpyPSMessageQueue->addResponse(resp);
+#endif // GAMESPY_DISABLED
 }
 
 static void setPersistentDataLocaleCallback(int localid, int profileid, persisttype_t type, int index, int success, void *instance)
@@ -812,6 +822,7 @@ static void getPreorderCallback(int localid, int profileid, persisttype_t type, 
 
 void PSThreadClass::Thread_Function()
 {
+#ifndef GAMESPY_DISABLED
 	try {
 	_set_se_translator( DumpExceptionInfo ); // Hook that allows stack trace.
 	/*********
@@ -1065,6 +1076,7 @@ void PSThreadClass::Thread_Function()
 	} catch ( ... ) {
 		DEBUG_CRASH(("Exception in storage thread!"));
 	}
+#endif // GAMESPY_DISABLED
 }
 
 //-------------------------------------------------------------------------

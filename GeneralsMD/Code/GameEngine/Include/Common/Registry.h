@@ -47,6 +47,11 @@ Bool GetStringFromRegistry(AsciiString path, AsciiString key, AsciiString& val);
 	*/
 Bool GetUnsignedIntFromRegistry(AsciiString path, AsciiString key, UnsignedInt& val);
 
+/**
+ * Set an unsigned int in the registry
+ */
+Bool SetUnsignedIntInRegistry( AsciiString path, AsciiString key, UnsignedInt val);
+
 AsciiString GetRegistryLanguage(void); // convenience function
 AsciiString GetRegistryGameName(void); // convenience function
 UnsignedInt GetRegistryVersion(void); // convenience function

@@ -1614,6 +1614,7 @@ void WOLGameSetupMenuUpdate( WindowLayout * layout, void *userData)
 		raiseMessageBoxes = false;
 	}
 
+#ifndef GAMESPY_DISABLED
 	if (TheShell->isAnimFinished() && !buttonPushed && TheGameSpyPeerMessageQueue)
 	{
 		HandleBuddyResponses();
@@ -2432,6 +2433,9 @@ void WOLGameSetupMenuUpdate( WindowLayout * layout, void *userData)
 
 
 	}
+
+#endif // GAMESPY_DISABLED
+
 }// void WOLGameSetupMenuUpdate( WindowLayout * layout, void *userData)
 
 //-------------------------------------------------------------------------------------------------
@@ -2490,9 +2494,11 @@ WindowMsgHandledType WOLGameSetupMenuInput( GameWindow *window, UnsignedInt msg,
 
 
 // Slash commands -------------------------------------------------------------------------
+#ifndef GAMESPY_DISABLED
 extern "C" {
 int getQR2HostingStatus(void);
 }
+#endif // GAMESPY_DISABLED
 extern int isThreadHosting;
 
 Bool handleGameSetupSlashCommands(UnicodeString uText)
@@ -2513,8 +2519,10 @@ Bool handleGameSetupSlashCommands(UnicodeString uText)
 	if (token == "host")
 	{
 		UnicodeString s;
+#ifndef GAMESPY_DISABLED
 		s.format(L"Hosting qr2:%d thread:%d", getQR2HostingStatus(), isThreadHosting);
 		TheGameSpyInfo->addText(s, GameSpyColor[GSCOLOR_DEFAULT], NULL);
+#endif // GAMESPY_DISABLED
 		return TRUE; // was a slash command
 	}
 	else if (token == "me" && uText.getLength()>4)

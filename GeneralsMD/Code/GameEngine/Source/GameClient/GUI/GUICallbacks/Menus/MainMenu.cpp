@@ -30,7 +30,11 @@
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
 #include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
 
-#include "GameSpy/ghttp/ghttp.h"
+#ifdef GAMESPY_DISABLED
+	#include "GameNetwork/GameSpy/GSDisabledTypes.h"
+#else
+	#include "GameSpy/ghttp/ghttp.h"
+#endif
 
 #include "Lib/BaseType.h"
 #include "Common/GameEngine.h"
@@ -1054,16 +1058,20 @@ WindowMsgHandledType MainMenuSystem( GameWindow *window, UnsignedInt msg,
 		//---------------------------------------------------------------------------------------------
 		case GWM_CREATE:
 		{
+#ifndef GAMESPY_DISABLED
 			ghttpStartup();
+#endif
 			break;
 		}  // end case
 
 		//---------------------------------------------------------------------------------------------
 		case GWM_DESTROY:
 		{
+#ifndef GAMESPY_DISABLED
 			ghttpCleanup();
 			DEBUG_LOG(("Tearing down GameSpy from MainMenuSystem(GWM_DESTROY)\n"));
 			TearDownGameSpy();
+#endif
 			StopAsyncDNSCheck(); // kill off the async DNS check thread in case it is still running
 			break;
 

@@ -146,6 +146,17 @@ Bool GetStringFromRegistry(AsciiString path, AsciiString key, AsciiString& val)
 	return getStringFromRegistry(HKEY_CURRENT_USER, fullPath.str(), key.str(), val);
 }
 
+Bool SetUnsignedIntInRegistry( AsciiString path, AsciiString key, UnsignedInt val)
+{
+	AsciiString fullPath = "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour";
+	fullPath.concat(path);
+
+	if (setUnsignedIntInRegistry( HKEY_LOCAL_MACHINE, fullPath, key, val))
+		return true;
+
+	return setUnsignedIntInRegistry( HKEY_CURRENT_USER, fullPath, key, val );
+}
+
 Bool GetUnsignedIntFromRegistry(AsciiString path, AsciiString key, UnsignedInt& val)
 {
 	AsciiString fullPath = "SOFTWARE\\Electronic Arts\\EA Games\\Command and Conquer Generals Zero Hour";

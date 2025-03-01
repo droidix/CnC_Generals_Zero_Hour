@@ -141,9 +141,11 @@ Bool g_debugSlots = FALSE;
 std::list<PeerResponse> TheLobbyQueuedUTMs;
 
 // Slash commands -------------------------------------------------------------------------
+#ifndef GAMESPY_DISABLED
 extern "C" {
 int getQR2HostingStatus(void);
 }
+#endif // GAMESPY_DISABLED
 extern int isThreadHosting;
 
 Bool handleLobbySlashCommands(UnicodeString uText)
@@ -164,8 +166,10 @@ Bool handleLobbySlashCommands(UnicodeString uText)
 	if (token == "host")
 	{
 		UnicodeString s;
+#ifndef GAMESPY_DISABLED
 		s.format(L"Hosting qr2:%d thread:%d", getQR2HostingStatus(), isThreadHosting);
 		TheGameSpyInfo->addText(s, GameSpyColor[GSCOLOR_DEFAULT], NULL);
+#endif // GAMESPY_DISABLED
 		return TRUE; // was a slash command
 	}
 	else if (token == "me" && uText.getLength()>4)
@@ -489,7 +493,7 @@ static Int insertPlayerInListbox(const PlayerInfo& info, Color color)
 
 void PopulateLobbyPlayerListbox(void)
 {
-
+#ifndef GAMESPY_DISABLED
 	if (!listboxLobbyPlayers)
 		return;
 
@@ -603,7 +607,7 @@ void PopulateLobbyPlayerListbox(void)
 		// restore top visible entry
 		GadgetListBoxSetTopVisibleEntry(listboxLobbyPlayers, previousTopIndex);
 	}
-
+#endif // GAMESPY_DISABLED
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -902,6 +906,7 @@ static void refreshPlayerList( Bool forceRefresh )
 //-------------------------------------------------------------------------------------------------
 void WOLLobbyMenuUpdate( WindowLayout * layout, void *userData)
 {
+#ifndef GAMESPY_DISABLED
 		if(justEntered)
 	{
 		if(initialGadgetDelay == 1)
@@ -1325,6 +1330,8 @@ void WOLLobbyMenuUpdate( WindowLayout * layout, void *userData)
 	refreshGameList();
 #endif
 	}
+
+#endif // GAMESPY_DISABLED
 }// WOLLobbyMenuUpdate
 
 //-------------------------------------------------------------------------------------------------

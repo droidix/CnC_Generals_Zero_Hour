@@ -1012,6 +1012,7 @@ static const char* getMessageString(Int t)
 //-------------------------------------------------------------------------------------------------
 void WOLQuickMatchMenuUpdate( WindowLayout * layout, void *userData)
 {
+#ifndef GAMESPY_DISABLED
 	if (TheGameLogic->isInShellGame() && TheGameLogic->getFrame() == 1)
 	{
 		SignalUIInteraction(SHELL_SCRIPT_HOOK_GENERALS_ONLINE_ENTERED_FROM_GAME);
@@ -1464,6 +1465,9 @@ void WOLQuickMatchMenuUpdate( WindowLayout * layout, void *userData)
 		}
 #endif // PERF_TEST
 	}
+
+#endif // GAMESPY_DISABLED
+
 }// WOLQuickMatchMenuUpdate
 
 //-------------------------------------------------------------------------------------------------

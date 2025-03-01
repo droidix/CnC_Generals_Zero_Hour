@@ -266,6 +266,7 @@ GPProfile GameSpyBuddyMessageQueue::getLocalProfileID( void )
 
 void BuddyThreadClass::Thread_Function()
 {
+#ifndef GAMESPY_DISABLED
 	try {
 	_set_se_translator( DumpExceptionInfo ); // Hook that allows stack trace.
 	GPConnection gpCon;
@@ -390,10 +391,12 @@ void BuddyThreadClass::Thread_Function()
 	} catch ( ... ) {
 		DEBUG_CRASH(("Exception in buddy thread!"));
 	}
+#endif // GAMESPY_DISABLED
 }
 
 void BuddyThreadClass::errorCallback( GPConnection *con, GPErrorArg *arg )
 {
+#ifndef GAMESPY_DISABLED
 	// log the error
 	DEBUG_LOG(("GPErrorCallback\n"));
 	m_lastErrorCode = arg->errorCode;
@@ -502,6 +505,7 @@ void BuddyThreadClass::errorCallback( GPConnection *con, GPErrorArg *arg )
 			m_isdeleting = false;
 		}
 	}
+#endif // GAMESPY_DISABLED
 }
 
 static void getNickForMessage( GPConnection *con, GPGetInfoResponseArg *arg, void *param )
@@ -512,6 +516,7 @@ static void getNickForMessage( GPConnection *con, GPGetInfoResponseArg *arg, voi
 
 void BuddyThreadClass::messageCallback( GPConnection *con, GPRecvBuddyMessageArg *arg )
 {
+#ifndef GAMESPY_DISABLED
 	BuddyResponse messageResponse;
 	messageResponse.buddyResponseType = BuddyResponse::BUDDYRESPONSE_MESSAGE;
 	messageResponse.profile = arg->profile;
@@ -525,10 +530,12 @@ void BuddyThreadClass::messageCallback( GPConnection *con, GPRecvBuddyMessageArg
 	messageResponse.arg.message.date = arg->date;
 	DEBUG_LOG(("Got a buddy message from %d [%ls]\n", arg->profile, s.c_str()));
 	TheGameSpyBuddyMessageQueue->addResponse( messageResponse );
+#endif // GAMESPY_DISABLED
 }
 
 void BuddyThreadClass::connectCallback( GPConnection *con, GPConnectResponseArg *arg )
 {
+#ifndef GAMESPY_DISABLED
 	BuddyResponse loginResponse;
 	if (arg->result == GP_NO_ERROR)
 	{
@@ -614,21 +621,25 @@ void BuddyThreadClass::connectCallback( GPConnection *con, GPConnectResponseArg 
 			TheGameSpyPeerMessageQueue->addResponse(resp);
 		}
 	}
+#endif // GAMESPY_DISABLED
 }
 
 // -----------------------
 
 static void getInfoResponseForRequest( GPConnection *con, GPGetInfoResponseArg *arg, void *param )
 {
+#ifndef GAMESPY_DISABLED
 	BuddyResponse *resp = (BuddyResponse *)param;
 	resp->profile = arg->profile;
 	strcpy(resp->arg.request.nick, arg->nick);
 	strcpy(resp->arg.request.email, arg->email);
 	strcpy(resp->arg.request.countrycode, arg->countrycode);
+#endif // GAMESPY_DISABLED
 }
 
 void BuddyThreadClass::requestCallback( GPConnection *con, GPRecvBuddyRequestArg *arg )
 {
+#ifndef GAMESPY_DISABLED
 	BuddyResponse response;
 	response.buddyResponseType = BuddyResponse::BUDDYRESPONSE_REQUEST;
 	response.profile = arg->profile;
@@ -641,6 +652,7 @@ void BuddyThreadClass::requestCallback( GPConnection *con, GPRecvBuddyRequestArg
 	response.arg.request.text[GP_REASON_LEN-1] = 0;
 
 	TheGameSpyBuddyMessageQueue->addResponse( response );
+#endif // GAMESPY_DISABLED
 }
 
 // -----------------------
@@ -656,6 +668,7 @@ static void getInfoResponseForStatus(GPConnection * connection, GPGetInfoRespons
 
 void BuddyThreadClass::statusCallback( GPConnection *con, GPRecvBuddyStatusArg *arg )
 {
+#ifndef GAMESPY_DISABLED
 	BuddyResponse response;
 
 	// get user's name
@@ -672,6 +685,7 @@ void BuddyThreadClass::statusCallback( GPConnection *con, GPRecvBuddyStatusArg *
 
 	// relay to UI
 	TheGameSpyBuddyMessageQueue->addResponse( response );
+#endif // GAMESPY_DISABLED
 }
 
 

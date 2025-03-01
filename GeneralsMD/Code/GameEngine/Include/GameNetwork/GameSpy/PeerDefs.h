@@ -31,8 +31,12 @@
 #ifndef __PEERDEFS_H__
 #define __PEERDEFS_H__
 
-#include "GameSpy/Peer/Peer.h"
-#include "GameSpy/GP/GP.h"
+#ifdef GAMESPY_DISABLED
+	#include "GSDisabledTypes.h"
+#else
+	#include "GameSpy/Peer/Peer.h"
+	#include "GameSpy/GP/GP.h"
+#endif
 
 #include "GameClient/Color.h"
 #include "Common/STLTypedefs.h"

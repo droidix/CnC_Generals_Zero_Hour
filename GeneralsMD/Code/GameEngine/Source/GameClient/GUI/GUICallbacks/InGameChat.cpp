@@ -154,9 +154,13 @@ Bool IsInGameChatActive() {
 }
 
 // Slash commands -------------------------------------------------------------------------
+
+#ifndef GAMESPY_DISABLED
 extern "C" {
 int getQR2HostingStatus(void);
 }
+#endif // GAMESPY_DISABLED
+
 extern int isThreadHosting;
 
 Bool handleInGameSlashCommands(UnicodeString uText)
@@ -177,7 +181,9 @@ Bool handleInGameSlashCommands(UnicodeString uText)
 	if (token == "host")
 	{
 		UnicodeString s;
+#ifndef GAMESPY_DISABLED
 		s.format(L"Hosting qr2:%d thread:%d", getQR2HostingStatus(), isThreadHosting);
+#endif // GAMESPY_DISABLED
 		TheInGameUI->message(s);
 		return TRUE; // was a slash command
 	}

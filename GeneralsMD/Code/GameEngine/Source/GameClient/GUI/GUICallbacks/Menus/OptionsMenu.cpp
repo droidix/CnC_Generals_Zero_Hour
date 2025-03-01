@@ -30,7 +30,11 @@
 // INCLUDES ///////////////////////////////////////////////////////////////////////////////////////
 #include "PreRTS.h"	// This must go first in EVERY cpp file int the GameEngine
 
-#include "GameSpy/ghttp/ghttp.h"
+#ifdef GAMESPY_DISABLED
+	#include "GameNetwork/GameSpy/GSDisabledTypes.h"
+#else
+	#include "GameSpy/ghttp/ghttp.h"
+#endif
 
 #include "Common/AudioAffect.h"
 #include "Common/AudioSettings.h"
@@ -1143,8 +1147,10 @@ static void saveOptions( void )
 		UnicodeString uStr = GadgetTextEntryGetText(textEntryHTTPProxy);
 		AsciiString aStr;
 		aStr.translate(uStr);
+#ifndef GAMESPY_DISABLED
 		SetStringInRegistry("", "Proxy", aStr.str());
 		ghttpSetProxy(aStr.str());
+#endif
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -1562,9 +1568,9 @@ void OptionsMenuInit( WindowLayout *layout, void *userData )
 	if (textEntryHTTPProxy)
 	{
 		UnicodeString uStr;
-		std::string proxy;
+		AsciiString proxy;
 		GetStringFromRegistry("", "Proxy", proxy);
-		uStr.translate(proxy.c_str());
+		uStr.translate(proxy.str());
 		GadgetTextEntrySetText(textEntryHTTPProxy, uStr);
 	}
 
