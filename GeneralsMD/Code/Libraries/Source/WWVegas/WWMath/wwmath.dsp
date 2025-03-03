@@ -44,8 +44,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /Z7 /Od /I "..\Library" /D "G_CODE_BASE" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /FR /YX /FD /c
-# ADD CPP /nologo /G6 /MDd /W3 /WX /Gi /GX /Zi /O2 /Ob2 /I "..\wwlib" /I "..\wwdebug" /I "..\wwsaveload" /D "G_CODE_BASE" /D "DIRECTX" /D "_DEBUG" /D WINVER=0x400 /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "WIN32" /YX /FD /c
-# SUBTRACT CPP /Fr
+# ADD CPP /nologo /G6 /MDd /W3 /WX /Gi /GX /Zi /O2 /Ob2 /I "..\wwlib" /I "..\..\..\DirectX\Include" /I "..\wwdebug" /I "..\wwsaveload" /D "G_CODE_BASE" /D "DIRECTX" /D "_DEBUG" /D WINVER=0x400 /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "WIN32" /YX /FD /c
 # ADD BASE RSC /l 0x409
 # ADD RSC /l 0x409
 BSC32=bscmake.exe
