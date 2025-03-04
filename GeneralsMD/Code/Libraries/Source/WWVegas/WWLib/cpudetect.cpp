@@ -1328,5 +1328,26 @@ void Get_OS_Info(
 			os_info.Code="WINXX";
 			return;
 		}
+
+		if (OSVersionNumberMajor==6) {
+			if (OSVersionNumberMinor==0) {
+				os_info.Code="VISTA";
+				return;
+			}
+			if (OSVersionNumberMinor==1) {
+				os_info.Code="WIN70";
+				return;
+			}
+			if (OSVersionNumberMinor==2) {
+				os_info.Code="WIN80";
+				return;
+			}
+			if (OSVersionNumberMinor==3) {
+				os_info.Code="WIN81";
+				return;
+			}
+		}
+		os_info.Code="WINXX";
+		return;
 	}
 }
