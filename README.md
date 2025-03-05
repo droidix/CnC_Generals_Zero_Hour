@@ -5,13 +5,20 @@ This branch is focused getting the original code to compile with Visual C++ 6.0 
 
 ## Projects Currently Building:
 
-- [x] Benchmark
 - [x] Compression
 - [x] EABrowserDispatch
 - [x] GameEngine
 - [x] GameEngineDevice
+- [x] ww3d2
+- [x] wwdebug
+- [x] WWDownload
+- [x] wwlib
+- [x] wwmath
+- [x] wwsaveload
+- [x] wwshade
+- [x] wwutil
+- [x] launcher
 - [ ] RTS
-- [ ] (many more)
 
 
 ## HOWTO
@@ -34,11 +41,6 @@ My initial Git configuration had all line endings converted to `LF`, but that me
 These instructions to [Install Visual Studio 6.0 on Windows 10](https://www.codeproject.com/Articles/1191047/Install-Visual-Studio-6-0-on-Windows-10) were helpful.  I just had the Visual C++ 6.0 ISO instead of the full Visual Studio.
 
 For service pack 6, acquire `Vs6sp6.exe` (mine had a SHA256 of `7fa1d1778824b55a5fceb02f45c399b5d4e4dce7403661e67e587b5f455edbf3`).
-
-
-### Benchmark Library Source
-
-Download the BYTEmark beta source from the [BYTE Benchmarks](https://www.math.utah.edu/~mayer/linux/byte/index.html) page and place the contents in `\Code\Libraries\Source\Benchmark`.
 
 
 ### Compression Library Sources
@@ -98,6 +100,11 @@ Right-click the project and select the "Build" option.
 - added ` /I "..\Libraries\Source\Stubs\Bink" ` to the build settings
 - added ` /I "..\Libraries\Source\Stubs\Miles" ` to the build settings
 - removed ` /I "..\Libraries\Include\MSS" ` from the build settings
+
+
+### Benchmark
+
+- removed project from workspace as the implementation of RunBenchmark was not present
 
 
 ### GameEngine
