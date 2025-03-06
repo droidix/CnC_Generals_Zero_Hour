@@ -79,6 +79,11 @@ An older version of DirectX SDK is needed that includes the full set of DirectX 
 Place `nvasm.exe` from [The Wayback Machine](https://web.archive.org/web/20061006093538/http://developer.nvidia.com/object/nvasm.html) in `\Code\Tools\NVASM\`.
 
 
+### Debug Helper
+
+**TODO** document and link to the specific `DbgHelp.h` and `DbgHelp.Lib`
+
+
 ### Building a Project
 
 Right-click the project and select the "Build" option.
