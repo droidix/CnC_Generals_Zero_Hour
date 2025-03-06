@@ -83,6 +83,17 @@ static void AILCALLBACK streamingFileClose(U32 fileHandle);
 static S32 AILCALLBACK streamingFileSeek(U32 fileHandle, S32 offset, U32 type);
 static U32 AILCALLBACK streamingFileRead(U32 fileHandle, void *buffer, U32 bytes);
 
+
+#include "MilesAudioDevice/MilesProcs.h"
+#define WPROC(DllName, ReturnType, Name, Params) \
+    typedef ReturnType Name##_t Params; \
+    static Name##_t *Name;
+
+WIN32_DYNAMIC_PROCS
+
+#undef WPROC
+
+
 //-------------------------------------------------------------------------------------------------
 MilesAudioManager::MilesAudioManager() :
 	m_providerCount(0),
@@ -99,6 +110,16 @@ MilesAudioManager::MilesAudioManager() :
 	m_prefSpeaker(AsciiString::TheEmptyString)
 {
 	m_audioCache = NEW AudioFileCache;
+
+
+    HMODULE milesModule = LoadLibraryA("mss32.dll");
+
+#define WPROC(DllName, ReturnType, Name, Params) \
+    Name = (Name##_t*)GetProcAddress(milesModule, DllName);
+
+	WIN32_DYNAMIC_PROCS
+
+#undef WPROC
 }
 
 //-------------------------------------------------------------------------------------------------
