@@ -74,8 +74,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /G6 /MDd /W3 /WX /Gm /GX /ZI /Od /I "Libraries\Include" /I "GameEngine\Include" /I "gameenginedevice\Include" /I "Libraries\Source\WWVegas" /I "Libraries\Source\WWVegas\WWLib" /I "Libraries\Source\WWVegas\WWMath" /I "Libraries\Source\WWVegas\WWDebug" /I "Libraries\Source\WWVegas\WWSaveLoad" /I "Libraries\Source\WWVegas\WW3D2" /I "Libraries\Include\Granny" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "BROWSER_DEBUG" /YX /FD /GZ /c
-# SUBTRACT CPP /Fr
+# ADD CPP /nologo /G6 /MDd /W3 /WX /Gm /GX /ZI /Od /I "Libraries\Source\STLport-4.5.3" /I "Libraries\Source\BinkStub" /I "Libraries\DirectX\Include" /I "Libraries\Include" /I "GameEngine\Include" /I "gameenginedevice\Include" /I "Libraries\Source\WWVegas" /I "Libraries\Source\WWVegas\WWLib" /I "Libraries\Source\WWVegas\WWMath" /I "Libraries\Source\WWVegas\WWDebug" /I "Libraries\Source\WWVegas\WWSaveLoad" /I "Libraries\Source\WWVegas\WW3D2" /I "Libraries\Include\Granny" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "BROWSER_DEBUG" /YX /FD /I /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -84,7 +83,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386
-# ADD LINK32 BenchmarkD.lib WW3D2Debug.lib WWDebugDebug.lib WWUtilDebug.lib WWLibDebug.lib WWMathDebug.lib GameEngineDebug.lib GameEngineDeviceDebug.lib binkw32.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3dx8.lib mss32.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib /nologo /subsystem:windows /pdb:"..\Run\RTSD.pdb" /map:"..\Run\RTSD.map" /debug /machine:I386 /nodefaultlib:"libcd.lib" /out:"..\Run\RTSD.exe" /libpath:"GameEngine" /libpath:"GameEngine\Lib" /libpath:"GameEngineDevice\Lib" /libpath:"Libraries\Lib"
+# ADD LINK32 WW3D2Debug.lib WWDebugDebug.lib WWUtilDebug.lib WWLibDebug.lib WWMathDebug.lib WWDownloadDebug.lib GameEngineDebug.lib GameEngineDeviceDebug.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3dx8.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib BinkStub.lib /nologo /subsystem:windows /pdb:"..\Run\RTSD.pdb" /map:"..\Run\RTSD.map" /debug /machine:I386 /nodefaultlib:"libcd.lib" /out:"..\Run\RTSD.exe" /libpath:"GameEngine" /libpath:"GameEngine\Lib" /libpath:"GameEngineDevice\Lib" /libpath:"Libraries\Lib" /libpath:"Libraries\DirectX\Lib"
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "RTS - Win32 Internal"
@@ -199,7 +198,7 @@ SOURCE=.\Main\generatedVersion.h
 USERDEP__GENER="$(ProjDir)\main\winmain.cpp"	"$(ProjDir)\main\winmain.h"	"$(ProjDir)\Libraries\Lib\WW3D2.lib"	"$(ProjDir)\Libraries\Lib\WWDebug.lib"	"$(ProjDir)\Libraries\Lib\WWUtil.lib"	"$(ProjDir)\Libraries\Lib\WWLib.lib"	"$(ProjDir)\Libraries\Lib\WWMath.lib"	"$(ProjDir)\GameEngine\Lib\GameEngine.lib"	"$(ProjDir)\GameEngineDevice\Lib\GameEngineDevice.lib"	
 # Begin Custom Build - Incrementing version numbers held in $(InputPath) .\Main\buildVersion.h
 ProjDir=.
-TargetDir=\projects\generalsmd\production\Run
+TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -214,7 +213,7 @@ InputPath=.\Main\generatedVersion.h
 USERDEP__GENER="$(ProjDir)\main\winmain.cpp"	"$(ProjDir)\main\winmain.h"	"$(ProjDir)\Libraries\Lib\WW3D2Debug.lib"	"$(ProjDir)\Libraries\Lib\WWDebugDebug.lib"	"$(ProjDir)\Libraries\Lib\WWUtilDebug.lib"	"$(ProjDir)\Libraries\Lib\WWLibDebug.lib"	"$(ProjDir)\Libraries\Lib\WWMathDebug.lib"	"$(ProjDir)\GameEngine\Lib\GameEngineDebug.lib"	"$(ProjDir)\GameEngineDevice\Lib\GameEngineDeviceDebug.lib"	
 # Begin Custom Build - Incrementing version numbers held in $(InputPath) .\Main\buildVersion.h
 ProjDir=.
-TargetDir=\projects\generalsmd\production\Run
+TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -229,7 +228,7 @@ InputPath=.\Main\generatedVersion.h
 USERDEP__GENER="$(ProjDir)\main\winmain.cpp"	"$(ProjDir)\main\winmain.h"	"$(ProjDir)\Libraries\Lib\WW3D2Internal.lib"	"$(ProjDir)\Libraries\Lib\WWDebugInternal.lib"	"$(ProjDir)\Libraries\Lib\WWUtilInternal.lib"	"$(ProjDir)\Libraries\Lib\WWLibInternal.lib"	"$(ProjDir)\Libraries\Lib\WWMathInternal.lib"	"$(ProjDir)\GameEngine\Lib\GameEngineInternal.lib"	"$(ProjDir)\GameEngineDevice\Lib\GameEngineDeviceInternal.lib"	
 # Begin Custom Build - Incrementing version numbers held in $(InputPath) .\Main\buildVersion.h
 ProjDir=.
-TargetDir=\projects\generalsmd\production\Run
+TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -244,7 +243,7 @@ InputPath=.\Main\generatedVersion.h
 USERDEP__GENER="$(ProjDir)\main\winmain.cpp"	"$(ProjDir)\main\winmain.h"	"$(ProjDir)\Libraries\Lib\WW3D2Debug.lib"	"$(ProjDir)\Libraries\Lib\WWDebugDebug.lib"	"$(ProjDir)\Libraries\Lib\WWUtilDebug.lib"	"$(ProjDir)\Libraries\Lib\WWLibDebug.lib"	"$(ProjDir)\Libraries\Lib\WWMathDebug.lib"	"$(ProjDir)\GameEngine\Lib\GameEngineDebug.lib"	"$(ProjDir)\GameEngineDevice\Lib\GameEngineDeviceDebug.lib"	
 # Begin Custom Build - Incrementing version numbers held in $(InputPath) .\Main\buildVersion.h
 ProjDir=.
-TargetDir=\projects\generalsmd\production\Run
+TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
@@ -260,7 +259,7 @@ InputPath=.\Main\generatedVersion.h
 USERDEP__GENER="$(ProjDir)\main\winmain.cpp"	"$(ProjDir)\main\winmain.h"	"$(ProjDir)\Libraries\Lib\WW3D2.lib"	"$(ProjDir)\Libraries\Lib\WWDebug.lib"	"$(ProjDir)\Libraries\Lib\WWUtil.lib"	"$(ProjDir)\Libraries\Lib\WWLib.lib"	"$(ProjDir)\Libraries\Lib\WWMath.lib"	"$(ProjDir)\GameEngine\Lib\GameEngine.lib"	"$(ProjDir)\GameEngineDevice\Lib\GameEngineDevice.lib"	
 # Begin Custom Build - Incrementing version numbers held in $(InputPath) .\Main\buildVersion.h
 ProjDir=.
-TargetDir=\projects\generalsmd\production\Run
+TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"

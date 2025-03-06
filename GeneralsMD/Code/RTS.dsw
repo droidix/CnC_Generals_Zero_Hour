@@ -3,7 +3,7 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "Benchmark"=.\LIBRARIES\SOURCE\Benchmark\Benchmark.dsp - Package Owner=<4>
+Project: "BinkStub"=.\LIBRARIES\SOURCE\BinkStub\BinkStub.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
@@ -129,9 +129,6 @@ Package=<4>
     Project_Dep_Name EABrowserDispatch
     End Project Dependency
     Begin Project Dependency
-    Project_Dep_Name Benchmark
-    End Project Dependency
-    Begin Project Dependency
     Project_Dep_Name wwshade
     End Project Dependency
 }}}
@@ -152,9 +149,6 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name Compression
     End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name Benchmark
-    End Project Dependency
 }}}
 
 ###############################################################################
@@ -173,69 +167,6 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name Compression
     End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name Benchmark
-    End Project Dependency
-}}}
-
-###############################################################################
-
-Project: "GameSpyHTTP"=.\Libraries\Source\GameSpy\GameSpy\ghttp\GameSpyHTTP.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
-Project: "GameSpyPatching"=.\Libraries\Source\GameSpy\GameSpy\pt\GameSpyPatching.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
-Project: "GameSpyPeer"=.\Libraries\Source\GameSpy\GameSpy\peer\GameSpyPeer.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
-Project: "GameSpyPresence"=.\Libraries\Source\GameSpy\GameSpy\gp\GameSpyPresence.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
-Project: "GameSpyStats"=.\Libraries\Source\GameSpy\GameSpy\gstats\GameSpyStats.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
 }}}
 
 ###############################################################################
@@ -292,9 +223,6 @@ Package=<4>
     End Project Dependency
     Begin Project Dependency
     Project_Dep_Name EABrowserDispatch
-    End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name Benchmark
     End Project Dependency
     Begin Project Dependency
     Project_Dep_Name wwshade
@@ -359,9 +287,18 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name wwshade
     End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name Benchmark
-    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "MilesStub"=.\LIBRARIES\SOURCE\MilesStub\MilesStub.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
 }}}
 
 ###############################################################################
@@ -430,9 +367,6 @@ Package=<4>
     End Project Dependency
     Begin Project Dependency
     Project_Dep_Name GameSpyStats
-    End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name Benchmark
     End Project Dependency
     Begin Project Dependency
     Project_Dep_Name wwshade
@@ -520,9 +454,6 @@ Package=<4>
     End Project Dependency
     Begin Project Dependency
     Project_Dep_Name EABrowserDispatch
-    End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name Benchmark
     End Project Dependency
     Begin Project Dependency
     Project_Dep_Name wwshade

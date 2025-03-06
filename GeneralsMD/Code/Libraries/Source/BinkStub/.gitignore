@@ -1,0 +1,5 @@
+*
+!.gitignore
+!BinkStub.dsp
+!bink.h
+!bink.c

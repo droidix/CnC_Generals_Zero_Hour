@@ -1,9 +1,11 @@
 
 # Command & Conquer Generals (inc. Zero Hour) Source Code
 
-This branch is focused getting the original code to compile with Visual C++ 6.0 with minimal changes.  Currently focusing efforts on the `GeneralsMD` directory.
+This branch is focused getting the original code to compile with Visual C++ 6.0 with minimal changes.  Currently focusing efforts on the `GeneralsMD` directory (Zero Hour).
 
-## Projects Currently Building:
+**TODO: need to verify the steps of this readme when starting from scratch**
+
+## Projects Currently Building (in Debug):
 
 - [x] Compression
 - [x] EABrowserDispatch
@@ -18,7 +20,7 @@ This branch is focused getting the original code to compile with Visual C++ 6.0 
 - [x] wwshade
 - [x] wwutil
 - [x] launcher
-- [ ] RTS
+- [x] RTS
 
 
 ## HOWTO
@@ -77,18 +79,14 @@ An older version of DirectX SDK is needed that includes the full set of DirectX 
 Place `nvasm.exe` from [The Wayback Machine](https://web.archive.org/web/20061006093538/http://developer.nvidia.com/object/nvasm.html) in `\Code\Tools\NVASM\`.
 
 
-### Stub Libraries for Bink and Miles
-
-Get `.c` and `.h` files created by OmniBlade from [This Github Repo](https://github.com/jmacato/CnC_Generals_Zero_Hour/tree/main/Dependencies) and place in `\Code\Libraries\Source\Stubs\Bink\` and `Code\Libraries\Source\Stubs\Miles\`
-
-Change third parameter of this function from the Miles stub from from int to long:
-```
-int __stdcall AIL_decompress_ADPCM(const AILSOUNDINFO *info, void **outdata, unsigned int *outsize)
-```
-
 ### Building a Project
 
 Right-click the project and select the "Build" option.
+
+
+### Running
+
+Copy the data files from the retail version of the game to the `Run` directory, including `mss32.dll` and the `MSS` directory.
 
 
 ## Changes Included in This Branch
@@ -114,9 +112,15 @@ Right-click the project and select the "Build" option.
 
 ### GameEngineDevice
 
-- use stub libraries for Bink and Miles
+- includes a modified version of the Miles stub library created by OmniBlade
+- includes an X macro setup to dynamically link with the audio library
 - disable call to `AIL_MSS_version()`
 - define `u32` in `BinkVideoPlayer.cpp`
+
+
+### BinkStub
+
+- includes the stub files created by OmniBlade
 
 
 ## License
