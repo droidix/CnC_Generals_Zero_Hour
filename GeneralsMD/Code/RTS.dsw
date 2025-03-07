@@ -291,18 +291,6 @@ Package=<4>
 
 ###############################################################################
 
-Project: "MilesStub"=.\LIBRARIES\SOURCE\MilesStub\MilesStub.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
 Project: "ParticleEditor"=.\Tools\ParticleEditor\ParticleEditor.dsp - Package Owner=<4>
 
 Package=<5>
