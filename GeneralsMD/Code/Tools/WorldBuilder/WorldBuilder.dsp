@@ -72,8 +72,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /G6 /MDd /W3 /WX /Gm /GX /ZI /Od /I "./include" /I "./res" /I "../../libraries/include" /I "../../gameengine/include" /I "../../gameenginedevice/include/" /I "../../libraries/source/wwvegas" /I "../../libraries/source/wwvegas/ww3d2" /I "../../libraries/source/wwvegas/wwdebug" /I "../../libraries/source/wwvegas/wwlib" /I "../../libraries/source/wwvegas/wwmath" /I "../../libraries/source/wwvegas/wwsaveload" /I "../../Libraries/Source/Compression" /D "WWDEBUG" /D "_DEBUG" /D "EDITOR" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "REGEX_MALLOC" /D "STDC_HEADERS" /D "WIN32_LEAN_AND_MEAN" /D "_AFXDLL" /YX"stdafx.h" /FD /GZ /c
-# SUBTRACT CPP /Fr
+# ADD CPP /nologo /G6 /MDd /W3 /WX /Gm /GX /ZI /Od /I "./include" /I "./res" /I "..\..\Libraries\Source\STLport-4.5.3" /I "..\..\Libraries\DirectX\Include" /I "../../libraries/include" /I "../../gameengine/include" /I "../../gameenginedevice/include/" /I "../../libraries/source/wwvegas" /I "../../libraries/source/wwvegas/ww3d2" /I "../../libraries/source/wwvegas/wwdebug" /I "../../libraries/source/wwvegas/wwlib" /I "../../libraries/source/wwvegas/wwmath" /I "../../libraries/source/wwvegas/wwsaveload" /I "../../Libraries/Source/Compression" /D "WWDEBUG" /D "_DEBUG" /D "EDITOR" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "REGEX_MALLOC" /D "STDC_HEADERS" /D "WIN32_LEAN_AND_MEAN" /D "_AFXDLL" /YX"stdafx.h" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -83,7 +82,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /debug /machine:I386
-# ADD LINK32 BenchmarkD.lib ddraw.lib dinput.lib d3dx8.lib mss32.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib /nologo /subsystem:windows /pdb:"..\..\..\Run\WorldBuilderD.pdb" /map:"..\..\..\Run\WorldBuilderD.map" /debug /machine:I386 /out:"..\..\..\Run\WorldBuilderD.exe" /libpath:"..\..\Libraries\Lib" /libpath:"..\..\GameEngine\Lib" /libpath:"..\..\GameEngineDevice\Lib" /libpath:"..\..\GameEngine"
+# ADD LINK32 ddraw.lib dinput.lib d3dx8.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib /nologo /subsystem:windows /pdb:"..\..\..\Run\WorldBuilderD.pdb" /map:"..\..\..\Run\WorldBuilderD.map" /debug /machine:I386 /out:"..\..\..\Run\WorldBuilderD.exe" /libpath:"..\..\Libraries\Lib" /libpath:"..\..\GameEngine\Lib" /libpath:"..\..\GameEngineDevice\Lib" /libpath:"..\..\GameEngine" /libpath:"..\..\Libraries\DirectX\Lib"
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "WorldBuilder - Win32 Internal"

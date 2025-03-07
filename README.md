@@ -21,6 +21,7 @@ This branch is focused getting the original code to compile with Visual C++ 6.0 
 - [x] wwutil
 - [x] launcher
 - [x] RTS
+- [x] WorldBuilder
 
 
 ## HOWTO
