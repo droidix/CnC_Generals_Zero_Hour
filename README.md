@@ -3,7 +3,6 @@
 
 This branch is focused getting the original code to compile with Visual C++ 6.0 with minimal changes.  Currently focusing efforts on the `GeneralsMD` directory (Zero Hour).
 
-**TODO: need to verify the steps of this readme when starting from scratch**
 
 ## Projects Currently Building (in Debug):
 
@@ -50,7 +49,7 @@ For service pack 6, acquire `Vs6sp6.exe` (mine had a SHA256 of `7fa1d1778824b55a
 
 Download ZLib 1.1.4 from the [ZLib Fossils](https://www.zlib.net/fossils/) page and place the contents in `\Code\Libraries\Source\Compression\ZLib\`.
 
-Download the LZHL files from the [rFactorTools](https://github.com/Grumbel/rfactortools/tree/master/other/quickbms/src/libs/lzhl) project and place the contents in `\Code\Libraries\Source\Compression\LZHCompress\CompLibSource` and `CompLibHeader`.
+Download the LZHL files from the [rFactorTools](https://github.com/Grumbel/rfactortools/tree/master/other/quickbms/src/libs/lzhl) project and place all the files in `\Code\Libraries\Source\Compression\LZHCompress\CompLibSource` and a copy of the headers in `CompLibHeader`.
 
 In the LZHL source, add this line to the top of `lzhl_tcp.cpp` to suppress the debug info warning:
 ```
@@ -62,7 +61,7 @@ In the LZHL source, add this line to the top of `lzhl_tcp.cpp` to suppress the d
 
 Download 4.5.3 here [STLport-4.5.3.tar.gz](http://www.stlport.org/archive/STLport-4.5.3.tar.gz).
 
-Place the contents of `stlport` in `\Code\Libraries\STLport-4.5.3`.
+Within the tar file, extract the contents of just the `stlport` directory and place the files in `\Code\Libraries\STLport-4.5.3`.
 
 In that directory, run the following to patch the files:
 ```
@@ -85,14 +84,40 @@ Place `nvasm.exe` from [The Wayback Machine](https://web.archive.org/web/2006100
 **TODO** document and link to the specific `DbgHelp.h` and `DbgHelp.Lib`
 
 
+### Opening the Project
+
+Open Visual C++, click *File->Open Workspace...*, and then select the `\Code\RTS.dsw` file.
+
+
 ### Building a Project
 
-Right-click the project and select the "Build" option.
+- Click the FileView tab
+- In the build toolbar, select "Win32 Release" (this is only temporary to build the "versioning" tools).
+- Right-click the buildVersionUpdate project and select "Build", you should see:
+```
+buildVersionUpdate.exe - 0 error(s), 0 warning(s)
+```
+- Right-click the versionUpdate project and select "Build", you should see:
+```
+versionUpdate.exe - 0 error(s), 0 warning(s)
+```
+- In the build toolbar, select "Win32 Debug"
+- Right-click the RTS project and select the "Build".  After several minutes you'll get a Windows UAC prompt to approve running `buildVersionUpdate.exe` and `versionUpdate.exe`.  When the build is complete you should see:
+```
+RTSD.exe - 0 error(s), 0 warning(s)
+```
 
 
 ### Running
 
-Copy the data files from the retail version of the game to the `Run` directory, including `mss32.dll` and the `MSS` directory.
+- **one-time only** Install the Steam version of both Generals and Zero Hour.  Launch each game once so the appropriate Windows registry keys are setup.
+- Copy these files and directories from the Steam copy of Zero Hour to the `Run` directory:
+-- all of the `.big` files
+-- `Install_Final.bmp`
+-- `mss32.dll`
+-- `Data` directory
+-- `MSS` directory
+- Double-click `RTSD.exe` to launch the game and play!
 
 
 ## Changes Included in This Branch
