@@ -27,6 +27,7 @@
 // Stack walker
 //////////////////////////////////////////////////////////////////////////////
 #include "_pch.h"
+#if 0
 #include "dbghelp.h"
 
 // Definitions to allow run-time linking to the dbghelp.dll functions.
@@ -389,3 +390,4 @@ int DebugStackwalk::StackWalk(Signature &sig, struct _CONTEXT *ctx)
 
 	return sig.m_numAddr;
 }
+#endif
