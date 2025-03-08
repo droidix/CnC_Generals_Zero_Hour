@@ -92,6 +92,7 @@ BrowserDispatch_i.c
 BrowserDispatch.h
 BrowserDispatch.tlb
 generatedVersion.h
+buildVersion.h
 
 # Generated shader headers
 *.vsh_code.h
