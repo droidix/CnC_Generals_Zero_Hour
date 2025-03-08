@@ -128,7 +128,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	}
 
 	int major = 1;
-	int minor = 0;
+	int minor = 4;
 	int build = 0;
 
 	if (argc != 2)
