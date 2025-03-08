@@ -831,12 +831,12 @@ void GameEngine::execute( void )
 #endif
 			
 			{
-				try 
+				//try 
 				{
 					// compute a frame
 					update();
 				}
-				catch (INIException e)
+				/*catch (INIException e)
 				{
 					// Release CRASH doesn't return, so don't worry about executing additional code.
 					if (e.mFailureMessage)
@@ -855,8 +855,8 @@ void GameEngine::execute( void )
 					catch (...)
 					{
 					}
-					RELEASE_CRASH(("Uncaught Exception in GameEngine::update"));
-				}	// catch
+					//RELEASE_CRASH(("Uncaught Exception in GameEngine::update"));
+				}*/	// catch
 			}	// perf
 
 			{

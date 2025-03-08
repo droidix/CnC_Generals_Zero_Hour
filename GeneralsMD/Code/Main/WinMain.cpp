@@ -307,7 +307,7 @@ LRESULT CALLBACK WndProc( HWND hWnd, UINT message,
 													WPARAM wParam, LPARAM lParam )
 {
 
-	try
+	//try
 	{
 		// First let the IME manager do it's stuff. 
 		if ( TheIMEManager )
@@ -650,11 +650,11 @@ LRESULT CALLBACK WndProc( HWND hWnd, UINT message,
 		}  // end switch
 
 	}
-	catch (...)
+	/*catch (...)
 	{
 		RELEASE_CRASH(("Uncaught exception in Main::WndProc... probably should not happen\n"));
 		// no rethrow
-	}
+	}*/
 
 //In full-screen mode, only pass these messages onto the default windows handler.
 //Appears to fix issues with dual monitor systems but doesn't seem safe?
