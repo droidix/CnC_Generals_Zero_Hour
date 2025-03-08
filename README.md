@@ -145,6 +145,9 @@ RTSD.exe - 0 error(s), 0 warning(s)
 
 - includes the stub files created by OmniBlade
 
+### buildVersionUpdate and versionUpdate
+
+- Output executables are renamed to buildVersionUpd.exe and versionUpd.exe to prevent an UAC prompt after every compilation of the RTS project. (Those binaries are just for building)
 
 ## License
 
