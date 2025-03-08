@@ -132,6 +132,7 @@ RTS.exe - 0 error(s), 0 warning(s)
 
 - introduced the `GAMESPY_DISABLED` preprocessor define to disable code that uses the GameSpy SDK
 - disabled copy protection (by commenting out define `DO_COPY_PROTECTION`)
+- the crash handler is commented out. This allows for easier debugging.
 
 
 ### GameEngineDevice

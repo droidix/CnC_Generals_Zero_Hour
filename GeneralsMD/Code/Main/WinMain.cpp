@@ -882,7 +882,8 @@ Int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
   Profile::StartRange("init");
 #endif
 
-	try {
+	//try
+	{
 
 		_set_se_translator( DumpExceptionInfo ); // Hook that allows stack trace.
 		//
@@ -1090,10 +1091,10 @@ Int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		// BGC - shut down COM
 	//	OleUninitialize();
 	}	
-	catch (...) 
+	/*catch (...) 
 	{ 
 	
-	}
+	}*/
 
 	TheUnicodeStringCriticalSection = NULL;
 	TheDmaCriticalSection = NULL;

@@ -250,7 +250,8 @@ void GameEngine::setFramesPerSecondLimit( Int fps )
 void GameEngine::init( void ) {} /// @todo: I changed this to take argc & argv so we can parse those after the GDF is loaded.  We need to rethink this immediately as it is a nasty hack
 void GameEngine::init( int argc, char *argv[] )
 {
-	try {
+	//try
+	{
 		//create an INI object to use for loading stuff
 		INI ini;
 
@@ -672,7 +673,7 @@ void GameEngine::init( int argc, char *argv[] )
 		//initDisabledMasks();
 		
 	}
-	catch (ErrorCode ec)
+	/*catch (ErrorCode ec)
 	{
 		if (ec == ERROR_INVALID_D3D)
 		{
@@ -690,7 +691,7 @@ void GameEngine::init( int argc, char *argv[] )
 	catch (...)
 	{
 		RELEASE_CRASH(("Uncaught Exception during initialization."));
-	}
+	}*/
 
 	if(!TheGlobalData->m_playIntro)
 		TheWritableGlobalData->m_afterIntro = TRUE;
