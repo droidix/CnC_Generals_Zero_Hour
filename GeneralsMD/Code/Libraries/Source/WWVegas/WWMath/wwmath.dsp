@@ -67,7 +67,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /I "..\Library" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
-# ADD CPP /nologo /G6 /MD /W3 /WX /Gi /GX /O2 /Ob2 /I "..\wwlib" /I "..\wwdebug" /I "..\wwsaveload" /D WINVER=0x400 /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "NDEBUG" /D "WIN32" /D "IG_DEBUG_STACKTRACE" /YX /FD /c
+# ADD CPP /nologo /G6 /MD /W3 /WX /Gi /GX /O2 /Ob2 /I "..\wwlib" /I "..\..\..\DirectX\Include" /I "..\wwdebug" /I "..\wwsaveload" /D WINVER=0x400 /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "NDEBUG" /D "WIN32" /D "IG_DEBUG_STACKTRACE" /YX /FD /c
 # SUBTRACT CPP /Fr
 # ADD BASE RSC /l 0x409
 # ADD RSC /l 0x409
