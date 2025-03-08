@@ -93,10 +93,10 @@ Open Visual C++, click *File->Open Workspace...*, and then select the `\Code\RTS
 ### Building a Project
 
 - Click the FileView tab
-- In the build toolbar, select "Win32 Debug"
+- In the build toolbar, select "Win32 Debug" or "Win32 Release"
 - Right-click the RTS project and select the "Build". When the build is complete you should see:
 ```
-RTSD.exe - 0 error(s), 0 warning(s)
+RTS.exe - 0 error(s), 0 warning(s)
 ```
 
 
@@ -109,7 +109,7 @@ RTSD.exe - 0 error(s), 0 warning(s)
 -- `mss32.dll`
 -- `Data` directory
 -- `MSS` directory
-- Double-click `RTSD.exe` to launch the game and play!
+- Double-click `RTS.exe` (or `RTSD.exe` for debug) to launch the game and play!
 
 
 ## Changes Included in This Branch
