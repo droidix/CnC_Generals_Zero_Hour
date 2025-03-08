@@ -92,17 +92,8 @@ Open Visual C++, click *File->Open Workspace...*, and then select the `\Code\RTS
 ### Building a Project
 
 - Click the FileView tab
-- In the build toolbar, select "Win32 Release" (this is only temporary to build the "versioning" tools).
-- Right-click the buildVersionUpdate project and select "Build", you should see:
-```
-buildVersionUpdate.exe - 0 error(s), 0 warning(s)
-```
-- Right-click the versionUpdate project and select "Build", you should see:
-```
-versionUpdate.exe - 0 error(s), 0 warning(s)
-```
 - In the build toolbar, select "Win32 Debug"
-- Right-click the RTS project and select the "Build".  After several minutes you'll get a Windows UAC prompt to approve running `buildVersionUpdate.exe` and `versionUpdate.exe`.  When the build is complete you should see:
+- Right-click the RTS project and select the "Build". When the build is complete you should see:
 ```
 RTSD.exe - 0 error(s), 0 warning(s)
 ```

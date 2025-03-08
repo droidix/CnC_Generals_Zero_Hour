@@ -202,8 +202,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -217,8 +217,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpdD.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpdD.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -232,8 +232,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -247,8 +247,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -263,8 +263,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 

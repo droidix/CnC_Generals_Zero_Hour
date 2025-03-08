@@ -53,7 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /pdb:"..\..\..\Run\buildVersionUpdate.pdb" /map:"..\..\..\Run\buildVersionUpdate.map" /debug /machine:I386 /out:"..\..\..\Run\buildVersionUpdate.exe"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /pdb:"..\..\..\Run\buildVersionUpdate.pdb" /map:"..\..\..\Run\buildVersionUpdate.map" /debug /machine:I386 /out:"..\..\..\Run\buildVersionUpd.exe"
 
 !ELSEIF  "$(CFG)" == "buildVersionUpdate - Win32 Debug"
 
@@ -79,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /pdb:"..\..\..\Run\buildVersionUpdateD.pdb" /map:"..\..\..\Run\buildVersionUpdateD.map" /debug /machine:I386 /out:"..\..\..\Run\buildVersionUpdateD.exe"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /pdb:"..\..\..\Run\buildVersionUpdateD.pdb" /map:"..\..\..\Run\buildVersionUpdateD.map" /debug /machine:I386 /out:"..\..\..\Run\buildVersionUpdD.exe"
 # SUBTRACT LINK32
 
 !ENDIF 
