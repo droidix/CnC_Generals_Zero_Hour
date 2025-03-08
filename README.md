@@ -44,6 +44,7 @@ These instructions to [Install Visual Studio 6.0 on Windows 10](https://www.code
 
 For service pack 6, acquire `Vs6sp6.exe` (mine had a SHA256 of `7fa1d1778824b55a5fceb02f45c399b5d4e4dce7403661e67e587b5f455edbf3`).
 
+If you intend to debug with VS 6.0, [these instructions](https://stackoverflow.com/questions/2110759/how-to-debug-with-visual-c-6-on-windows-7-x64) show how to fix an issue where the application remains stuck after debugging.
 
 ### Compression Library Sources
 
