@@ -44,7 +44,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /G6 /MD /W3 /GX /Zi /O2 /I "..\wwsaveload" /I "..\ww3d2" /I "..\wwlib" /I "..\wwmath" /I "..\wwdebug" /I "..\..\..\DirectX\Include" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /FD /c
+# ADD CPP /nologo /G6 /MD /W3 /GX /Zi /O2 /I "..\wwsaveload" /I "..\ww3d2" /I "..\wwlib" /I "..\wwmath" /I "..\wwdebug" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /FD /c
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
 BSC32=bscmake.exe
