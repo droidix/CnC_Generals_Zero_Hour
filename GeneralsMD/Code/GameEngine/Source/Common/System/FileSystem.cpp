@@ -266,6 +266,8 @@ Bool FileSystem::createDirectory(AsciiString directory)
 //============================================================================
 Bool FileSystem::areMusicFilesOnCD()
 {
+	return TRUE; // CDs are a thing of the past
+#if 0 // hat tip to OmniBlade for a similar change
 	if (!TheCDManager) {
 		DEBUG_LOG(("FileSystem::areMusicFilesOnCD() - No CD Manager; returning false\n"));
 		return FALSE;
@@ -294,6 +296,7 @@ Bool FileSystem::areMusicFilesOnCD()
 		}
 	}
 	return FALSE;
+#endif
 }
 //============================================================================
 // FileSystem::loadMusicFilesFromCD
