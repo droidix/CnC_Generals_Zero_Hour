@@ -46,8 +46,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
-# ADD CPP /nologo /G6 /MD /W3 /WX /GX /O2 /Ob2 /I "..\wwlib" /I "..\wwmath" /I "..\wwdebug" /I "..\wwcpuid" /I "..\wwsaveload" /I "..\wwaudio" /I "..\miles6\include" /D WINVER=0x400 /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "NDEBUG" /D "WIN32" /D "IG_DEBUG_STACKTRACE" /YX /FD /c
-# SUBTRACT CPP /Fr
+# ADD CPP /nologo /G6 /MD /W3 /WX /GX /O2 /Ob2 /I "..\wwlib" /I "..\wwmath" /I "..\wwdebug" /I "..\wwcpuid" /I "..\wwsaveload" /I "..\wwaudio" /I "..\..\..\DirectX\Include" /I "..\..\..\..\GameEngineDevice\Include\MilesAudioDevice" /D WINVER=0x400 /D "_WINDOWS" /D "WIN32_LEAN_AND_MEAN" /D "NDEBUG" /D "WIN32" /D "IG_DEBUG_STACKTRACE" /YX /FD /c
 # ADD BASE RSC /l 0x409
 # ADD RSC /l 0x409
 BSC32=bscmake.exe

@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /G6 /MD /W3 /WX /GX /O2 /Ob2 /I "..\Libraries\Source\STLport-4.5.3" /I "..\Libraries\DirectX\Include" /I "..\Libraries\Source\Stubs\Bink" /I "..\Libraries\Source\Stubs\Miles" /I "../Libraries/Source/Benchmark" /I "..\Main" /I "Include" /I "..\GameEngine\Include" /I "..\Libraries\Include" /I "..\Libraries\Source\WWVegas" /I "..\Libraries\Source\WWVegas\WW3D2" /I "..\Libraries\Source\WWVegas\WWLib" /I "..\Libraries\Source\WWVegas\WWDebug" /I "..\Libraries\Source\WWVegas\WWMath" /I "..\Libraries\Source\WWVegas\WWSaveLoad" /I "..\Libraries\Include\Granny" /D "_LIB" /D "_WINDOWS" /D "IG_DEBUG_STACKTRACE" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_RELEASE" /YX /FD /c
+# ADD CPP /nologo /G6 /MD /W3 /WX /GX /O2 /Ob2 /I "..\Libraries\Source\STLport-4.5.3" /I "..\Libraries\DirectX\Include" /I "..\Libraries\Source\BinkStub" /I "../Libraries/Source/Benchmark" /I "..\Main" /I "Include" /I "..\GameEngine\Include" /I "..\Libraries\Include" /I "..\Libraries\Source\WWVegas" /I "..\Libraries\Source\WWVegas\WW3D2" /I "..\Libraries\Source\WWVegas\WWLib" /I "..\Libraries\Source\WWVegas\WWDebug" /I "..\Libraries\Source\WWVegas\WWMath" /I "..\Libraries\Source\WWVegas\WWSaveLoad" /I "..\Libraries\Include\Granny" /D "_LIB" /D "_WINDOWS" /D "IG_DEBUG_STACKTRACE" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_RELEASE" /YX /FD /c
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
 BSC32=bscmake.exe
