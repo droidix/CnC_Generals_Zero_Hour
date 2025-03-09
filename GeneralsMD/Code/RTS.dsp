@@ -56,7 +56,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 Benchmark.lib WW3D2.lib WWDebug.lib WWLib.lib WWUtil.lib WWMath.lib GameEngine.lib GameEngineDevice.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3dx8.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib BinkStub.lib /nologo /subsystem:windows /pdb:"..\Run\RTS.pdb" /map:"..\Run\RTS.map" /debug /machine:I386 /nodefaultlib:"libc.lib" /nodefaultlib:"debug.lib" /out:"..\Run\RTS.exe" /libpath:"..\..\GameEngine" /libpath:"GameEngine\Lib" /libpath:"GameEngineDevice\Lib" /libpath:"Libraries\Lib" /libpath:"GameEngine" /libpath:"Libraries\DirectX\Lib" /libpath:"Libraries\Source\BinkStub\lib" /OPT:REF /OPT:ICF
+# ADD LINK32 WW3D2.lib WWDebug.lib WWLib.lib WWUtil.lib WWMath.lib GameEngine.lib GameEngineDevice.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3dx8.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib BinkStub.lib /nologo /subsystem:windows /pdb:"..\Run\RTS.pdb" /map:"..\Run\RTS.map" /debug /machine:I386 /nodefaultlib:"libc.lib" /nodefaultlib:"debug.lib" /out:"..\Run\RTS.exe" /libpath:"..\..\GameEngine" /libpath:"GameEngine\Lib" /libpath:"GameEngineDevice\Lib" /libpath:"Libraries\Lib" /libpath:"GameEngine" /libpath:"Libraries\DirectX\Lib" /libpath:"Libraries\Source\BinkStub\lib" /OPT:REF /OPT:ICF
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "RTS - Win32 Debug"
@@ -82,7 +82,7 @@ BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386
-# ADD LINK32 WW3D2Debug.lib WWDebugDebug.lib WWUtilDebug.lib WWLibDebug.lib WWMathDebug.lib WWDownloadDebug.lib GameEngineDebug.lib GameEngineDeviceDebug.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3dx8.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib BinkStub.lib /nologo /subsystem:windows /pdb:"..\Run\RTSD.pdb" /map:"..\Run\RTSD.map" /debug /machine:I386 /nodefaultlib:"libcd.lib" /out:"..\Run\RTSD.exe" /libpath:"GameEngine" /libpath:"GameEngine\Lib" /libpath:"GameEngineDevice\Lib" /libpath:"Libraries\Lib" /libpath:"Libraries\DirectX\Lib" /libpath:"Libraries\Source\BinkStub\lib"
+# ADD LINK32 WW3D2Debug.lib WWDebugDebug.lib WWUtilDebug.lib WWLibDebug.lib WWMathDebug.lib WWDownloadDebug.lib GameEngineDebug.lib GameEngineDeviceDebug.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib d3dx8.lib d3d8.lib winmm.lib vfw32.lib dsound.lib wsock32.lib imm32.lib wininet.lib BinkStubD.lib /nologo /subsystem:windows /pdb:"..\Run\RTSD.pdb" /map:"..\Run\RTSD.map" /debug /machine:I386 /nodefaultlib:"libcd.lib" /out:"..\Run\RTSD.exe" /libpath:"GameEngine" /libpath:"GameEngine\Lib" /libpath:"GameEngineDevice\Lib" /libpath:"Libraries\Lib" /libpath:"Libraries\DirectX\Lib" /libpath:"Libraries\Source\BinkStub\lib"
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "RTS - Win32 Internal"
@@ -201,8 +201,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -216,8 +216,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpdD.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpdD.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -231,8 +231,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -246,8 +246,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 
@@ -262,8 +262,8 @@ TargetDir=\Projects\generals\GeneralsMD\Run
 InputPath=.\Main\generatedVersion.h
 
 "$(InputPath)" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	$(TargetDir)\versionUpdate.exe $(InputPath) 
-	$(TargetDir)\buildVersionUpdate.exe .\Main\buildVersion.h 
+	$(TargetDir)\versionUpd.exe $(InputPath) 
+	$(TargetDir)\buildVersionUpd.exe .\Main\buildVersion.h 
 	
 # End Custom Build
 

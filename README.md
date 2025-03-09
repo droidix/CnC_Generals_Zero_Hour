@@ -44,6 +44,7 @@ These instructions to [Install Visual Studio 6.0 on Windows 10](https://www.code
 
 For service pack 6, acquire `Vs6sp6.exe` (mine had a SHA256 of `7fa1d1778824b55a5fceb02f45c399b5d4e4dce7403661e67e587b5f455edbf3`).
 
+If you intend to debug with VS 6.0, [these instructions](https://stackoverflow.com/questions/2110759/how-to-debug-with-visual-c-6-on-windows-7-x64) show how to fix an issue where the application remains stuck after debugging.
 
 ### Compression Library Sources
 
@@ -92,19 +93,10 @@ Open Visual C++, click *File->Open Workspace...*, and then select the `\Code\RTS
 ### Building a Project
 
 - Click the FileView tab
-- In the build toolbar, select "Win32 Release" (this is only temporary to build the "versioning" tools).
-- Right-click the buildVersionUpdate project and select "Build", you should see:
+- In the build toolbar, select "Win32 Debug" or "Win32 Release"
+- Right-click the RTS project and select the "Build". When the build is complete you should see:
 ```
-buildVersionUpdate.exe - 0 error(s), 0 warning(s)
-```
-- Right-click the versionUpdate project and select "Build", you should see:
-```
-versionUpdate.exe - 0 error(s), 0 warning(s)
-```
-- In the build toolbar, select "Win32 Debug"
-- Right-click the RTS project and select the "Build".  After several minutes you'll get a Windows UAC prompt to approve running `buildVersionUpdate.exe` and `versionUpdate.exe`.  When the build is complete you should see:
-```
-RTSD.exe - 0 error(s), 0 warning(s)
+RTS.exe - 0 error(s), 0 warning(s)
 ```
 
 
@@ -117,7 +109,7 @@ RTSD.exe - 0 error(s), 0 warning(s)
 -- `mss32.dll`
 -- `Data` directory
 -- `MSS` directory
-- Double-click `RTSD.exe` to launch the game and play!
+- Double-click `RTS.exe` (or `RTSD.exe` for debug) to launch the game and play!
 
 
 ## Changes Included in This Branch
@@ -139,6 +131,8 @@ RTSD.exe - 0 error(s), 0 warning(s)
 ### GameEngine
 
 - introduced the `GAMESPY_DISABLED` preprocessor define to disable code that uses the GameSpy SDK
+- disabled copy protection (by commenting out define `DO_COPY_PROTECTION`)
+- the crash handler is commented out. This allows for easier debugging.
 
 
 ### GameEngineDevice
@@ -153,6 +147,9 @@ RTSD.exe - 0 error(s), 0 warning(s)
 
 - includes the stub files created by OmniBlade
 
+### buildVersionUpdate and versionUpdate
+
+- Output executables are renamed to buildVersionUpd.exe and versionUpd.exe to prevent an UAC prompt after every compilation of the RTS project. (Those binaries are just for building)
 
 ## License
 
