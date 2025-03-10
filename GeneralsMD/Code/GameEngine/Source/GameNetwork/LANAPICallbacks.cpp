@@ -261,7 +261,8 @@ void LANAPI::OnGameStart( void )
 		GameMessage *msg = TheMessageStream->appendMessage( GameMessage::MSG_NEW_GAME );
 		msg->appendIntegerArgument(GAME_LAN);
 
-		TheWritableGlobalData->m_useFpsLimit = false;
+		// note(droidix) if the FPS limit is disabled, the game will misbehave on modern machines (e.g., panning the window will be too fast and trees will sway at super speed)
+		// TheWritableGlobalData->m_useFpsLimit = false;
 
 		// Set the random seed
 		InitGameLogicRandom( m_currentGame->getSeed() );

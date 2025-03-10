@@ -104,11 +104,11 @@ RTS.exe - 0 error(s), 0 warning(s)
 
 - **one-time only** Install the Steam version of both Generals and Zero Hour.  Launch each game once so the appropriate Windows registry keys are setup.
 - Copy these files and directories from the Steam copy of Zero Hour to the `Run` directory:
--- all of the `.big` files
--- `Install_Final.bmp`
--- `mss32.dll`
--- `Data` directory
--- `MSS` directory
+  - all of the `.big` files
+  - `Install_Final.bmp`
+  - `mss32.dll`
+  - `Data` directory
+  - `MSS` directory
 - Double-click `RTS.exe` (or `RTSD.exe` for debug) to launch the game and play!
 
 
@@ -133,6 +133,7 @@ RTS.exe - 0 error(s), 0 warning(s)
 - introduced the `GAMESPY_DISABLED` preprocessor define to disable code that uses the GameSpy SDK
 - disabled copy protection (by commenting out define `DO_COPY_PROTECTION`)
 - the crash handler is commented out. This allows for easier debugging.
+- the FPS limit is no longer disabled for LAN games (panning the game window was uncontrollable and trees swayed at ultra speed)
 
 
 ### GameEngineDevice
