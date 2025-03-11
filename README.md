@@ -133,7 +133,14 @@ RTS.exe - 0 error(s), 0 warning(s)
 - introduced the `GAMESPY_DISABLED` preprocessor define to disable code that uses the GameSpy SDK
 - disabled copy protection (by commenting out define `DO_COPY_PROTECTION`)
 - the crash handler is commented out. This allows for easier debugging.
+- Some Bugfixes in Load Replay Menu
+
+
+### Networking
 - the FPS limit is no longer disabled for LAN games (panning the game window was uncontrollable and trees swayed at ultra speed)
+- Networking can be tested on one machine with new #define ENABLE_FAKE_IP
+- Fix LAN player tooltip
+- Remove Duplicate Serial Check
 
 
 ### GameEngineDevice
@@ -151,6 +158,7 @@ RTS.exe - 0 error(s), 0 warning(s)
 ### buildVersionUpdate and versionUpdate
 
 - Output executables are renamed to buildVersionUpd.exe and versionUpd.exe to prevent an UAC prompt after every compilation of the RTS project. (Those binaries are just for building)
+
 
 ## License
 
