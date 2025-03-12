@@ -116,11 +116,13 @@ RTS.exe - 0 error(s), 0 warning(s)
 
 ### (Multiple Projects, Where Applicable)
 
-- added ` /I "..\Libraries\Source\STLport-4.5.3" ` to the build settings
-- added ` /I "..\Libraries\DirectX\Include" ` to the build settings
-- added ` /I "..\Libraries\Source\Stubs\Bink" ` to the build settings
-- added ` /I "..\Libraries\Source\Stubs\Miles" ` to the build settings
-- removed ` /I "..\Libraries\Include\MSS" ` from the build settings
+added to the preprocessor include settings
+- `../Libraries/Source/STLport-4.5.3`
+- `../Libraries/DirectX/Include`
+- `../Libraries/Source/Stubs/Bink`
+
+removed from the preprocessor include settings
+- `../Libraries/Include/MSS`
 
 
 ### Benchmark
@@ -138,7 +140,7 @@ RTS.exe - 0 error(s), 0 warning(s)
 
 ### Networking
 - the FPS limit is no longer disabled for LAN games (panning the game window was uncontrollable and trees swayed at ultra speed)
-- Networking can be tested on one machine with new #define ENABLE_FAKE_IP
+- Networking can be tested on one machine with new `#define ENABLE_FAKE_IP`
 - Fix LAN player tooltip
 - Remove Duplicate Serial Check
 
@@ -158,6 +160,11 @@ RTS.exe - 0 error(s), 0 warning(s)
 ### buildVersionUpdate and versionUpdate
 
 - Output executables are renamed to buildVersionUpd.exe and versionUpd.exe to prevent an UAC prompt after every compilation of the RTS project. (Those binaries are just for building)
+
+
+### Added Command Line Arguments
+
+- `-fakeip N` when `ENABLE_FAKE_IP` is defined
 
 
 ## License

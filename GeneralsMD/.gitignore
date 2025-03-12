@@ -102,3 +102,4 @@ buildVersion.h
 *.ncb
 *.opt
 *.plg
+*.aps
