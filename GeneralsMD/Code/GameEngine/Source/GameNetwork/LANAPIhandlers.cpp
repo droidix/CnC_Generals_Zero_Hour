@@ -252,6 +252,7 @@ void LANAPI::handleRequestJoin( LANMessage *msg, UnsignedInt senderIP )
 			}
 #endif
 			
+#if 0
 			// check for a duplicate serial
 			AsciiString s;
 			for (player = 0; canJoin && player<MAX_SLOTS; ++player)
@@ -287,6 +288,7 @@ void LANAPI::handleRequestJoin( LANMessage *msg, UnsignedInt senderIP )
 					}
 				}
 			}
+#endif
 
 			// We're the host, so see if he has a duplicate name
 			for (player = 0; canJoin && player<MAX_SLOTS; ++player)
@@ -414,7 +416,7 @@ void LANAPI::handleJoinAccept( LANMessage *msg, UnsignedInt senderIP )
 
 				LANPreferences prefs;
 				AsciiString entry;
-				entry.format("%d.%d.%d.%d:%s", senderIP >> 24, (senderIP & 0xff0000) >> 16, (senderIP & 0xff00) >> 8, senderIP & 0xff, UnicodeStringToQuotedPrintable(m_currentGame->getSlot(0)->getName()).str());
+				entry.format("%d.%d.%d.%d:%s", PRINT_IP_HELPER(senderIP), UnicodeStringToQuotedPrintable(m_currentGame->getSlot(0)->getName()).str());
 				prefs["RemoteIP0"] = entry;
 				prefs.write();
 
