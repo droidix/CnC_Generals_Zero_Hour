@@ -1,6 +1,6 @@
 #define WIN32_DYNAMIC_PROCS \
 	WPROC("_AIL_3D_sample_volume@4", long __stdcall, AIL_3D_sample_volume, (H3DSAMPLE sample)) \
-	WPROC("_AIL_set_3D_sample_volume@8", void __stdcall, AIL_set_3D_sample_volume, (H3DSAMPLE sample, long volume)) \
+	WPROC("_AIL_set_3D_sample_volume@8", void __stdcall, AIL_set_3D_sample_volume, (H3DSAMPLE sample, float volume)) \
 	WPROC("_AIL_end_3D_sample@4", void __stdcall, AIL_end_3D_sample, (H3DSAMPLE sample)) \
 	WPROC("_AIL_resume_3D_sample@4", void __stdcall, AIL_resume_3D_sample, (H3DSAMPLE sample)) \
 	WPROC("_AIL_stop_3D_sample@4", void __stdcall, AIL_stop_3D_sample, (H3DSAMPLE sample)) \
