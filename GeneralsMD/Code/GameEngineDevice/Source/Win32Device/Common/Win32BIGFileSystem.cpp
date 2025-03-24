@@ -47,6 +47,7 @@
 static const char *BIGFileIdentifier = "BIGF";
 
 Win32BIGFileSystem::Win32BIGFileSystem() : ArchiveFileSystem() {
+	m_logBIGDetails = false;
 }
 
 Win32BIGFileSystem::~Win32BIGFileSystem() {
@@ -56,6 +57,17 @@ void Win32BIGFileSystem::init() {
 	DEBUG_ASSERTCRASH(TheLocalFileSystem != NULL, ("TheLocalFileSystem must be initialized before TheArchiveFileSystem."));
 	if (TheLocalFileSystem == NULL) {
 		return;
+	}
+
+	// the command line settings in TheGlobalData aren't initilized at this point, so we have to directly look for the flag
+	LPWSTR cmdLine = GetCommandLineW();
+	wchar_t *token = wcstok(cmdLine, L" ");
+	while (token != NULL) {
+		if (wcscmp(token, L"-logBIGDetails") == 0) {
+			m_logBIGDetails = true;
+			break;
+		}
+		token = wcstok(NULL, L" ");
 	}
 
 	loadBigFilesFromDirectory("", "*.big");
@@ -169,7 +181,10 @@ ArchiveFile * Win32BIGFileSystem::openArchiveFile(const Char *filename) {
 		AsciiString debugpath;
 		debugpath = path;
 		debugpath.concat(fileInfo->m_filename);
-//		DEBUG_LOG(("Win32BIGFileSystem::openArchiveFile - adding file %s to archive file %s, file number %d\n", debugpath.str(), fileInfo->m_archiveFilename.str(), i));
+
+		if (m_logBIGDetails) {
+			DEBUG_LOG(("Win32BIGFileSystem::openArchiveFile - adding file %s to archive file %s, file number %d\n", debugpath.str(), fileInfo->m_archiveFilename.str(), i));
+		}
 
 		archiveFile->addFile(path, fileInfo);
 	}

@@ -55,6 +55,7 @@ public:
 	virtual Bool loadBigFilesFromDirectory(AsciiString dir, AsciiString fileMask, Bool overwrite = FALSE);
 protected:
 
+	Bool m_logBIGDetails;
 };
 
 #endif // __WIN32BIGFILESYSTEM_H

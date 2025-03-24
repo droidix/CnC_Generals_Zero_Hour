@@ -165,6 +165,7 @@ removed from the preprocessor include settings
 ### Added Command Line Arguments
 
 - `-fakeip N` when `ENABLE_FAKE_IP` is defined
+- `-logBIGDetails` displays the individual files found within the BIG file archives
 
 
 ## License
