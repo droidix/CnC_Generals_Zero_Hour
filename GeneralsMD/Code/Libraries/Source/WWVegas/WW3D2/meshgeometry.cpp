@@ -101,6 +101,9 @@
 #include "rinfo.h"
 #include "camera.h"
 
+#ifdef _DEBUG
+#include <stdio.h>
+#endif
 
 #if (OPTIMIZE_PLANEEQ_RAM)
 static SimpleVecClass<Vector4> _PlaneEQArray(1024);
@@ -144,6 +147,9 @@ MeshGeometryClass::MeshGeometryClass(void) :
 	BoundSphereCenter(0,0,0),
 	BoundSphereRadius(1),
 	CullTree(NULL)
+#ifdef _DEBUG
+	,DumpMeshToFile(false)
+#endif
 {
 }
 
@@ -180,6 +186,9 @@ MeshGeometryClass::MeshGeometryClass(const MeshGeometryClass & that) :
 	BoundSphereCenter(0,0,0),
 	BoundSphereRadius(1),
 	CullTree(NULL)
+#ifdef _DEBUG
+	,DumpMeshToFile(false)
+#endif
 {
 	*this = that;
 }
@@ -1789,6 +1798,13 @@ WW3DErrorType MeshGeometryClass::read_vertices(ChunkLoadClass & cload)
 	Vector3 * loc = Vertex->Get_Array();
 	assert(loc);
 
+#ifdef _DEBUG
+	FILE* vf = NULL;
+	if (DumpMeshToFile) {
+		vf = fopen("bucket.v.h", "w");
+	}
+#endif
+
 	for (int i=0; i<Get_Vertex_Count(); i++) {
 
 		if (cload.Read(&vert,sizeof(W3dVectorStruct)) != sizeof(W3dVectorStruct)) {
@@ -1798,7 +1814,19 @@ WW3DErrorType MeshGeometryClass::read_vertices(ChunkLoadClass & cload)
 		loc[i].X = vert.X;
 		loc[i].Y = vert.Y;
 		loc[i].Z = vert.Z;
+
+#ifdef _DEBUG
+		if (vf) {
+			fprintf(vf, "vertices[%d] = Vertex(%.9f, %.9f, %.9f);\n", i, vert.X, vert.Y, vert.Z);
+		}
+#endif
 	}
+
+#ifdef _DEBUG
+	if (vf) {
+		fclose(vf);
+	}
+#endif
 
 	return WW3D_ERROR_OK;	
 }
@@ -1856,6 +1884,13 @@ WW3DErrorType MeshGeometryClass::read_triangles(ChunkLoadClass & cload)
 	Vector4 * peq = get_planes();
 	uint8 * surface_types = Get_Poly_Surface_Type_Array();
 
+#ifdef _DEBUG
+	FILE* indf = NULL;
+	if (DumpMeshToFile) {
+		indf = fopen("bucket.i.h", "w");
+	}
+#endif
+
 	// read in each polygon one by one
 	for (int i=0; i<Get_Polygon_Count(); i++) {
 
@@ -1877,7 +1912,20 @@ WW3DErrorType MeshGeometryClass::read_triangles(ChunkLoadClass & cload)
 		// set the surface type
 		WWASSERT(tri.Attributes < 256);
 		surface_types[i] = (uint8)(tri.Attributes);
+
+#ifdef _DEBUG
+		if (indf) {
+			int base = i*3;
+			fprintf(indf, "indices[%d]  = %d; indices[%d]  = %d; indices[%d]  = %d;\n", base, tri.Vindex[0], base + 1, tri.Vindex[1], base + 2, tri.Vindex[2]);
+		}
+#endif
 	}
+
+#ifdef _DEBUG
+	if (indf) {
+		fclose(indf);
+	}
+#endif
 
 	return WW3D_ERROR_OK;	
 }

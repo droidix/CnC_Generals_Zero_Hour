@@ -252,6 +252,11 @@ protected:
 	float														BoundSphereRadius;
 	AABTreeClass *											CullTree;
 
+#ifdef _DEBUG
+	bool											DumpMeshToFile;
+#endif
+
+
 };
 
 /*
