@@ -40,7 +40,7 @@ My initial Git configuration had all line endings converted to `LF`, but that me
 
 ### Installing Visual C++ 6.0
 
-These instructions to [Install Visual Studio 6.0 on Windows 10](https://www.codeproject.com/Articles/1191047/Install-Visual-Studio-6-0-on-Windows-10) were helpful.  I just had the Visual C++ 6.0 ISO instead of the full Visual Studio.
+These instructions to [Install Visual Studio 6.0 on Windows 10](https://web.archive.org/web/20250215020247/https://www.codeproject.com/Articles/1191047/Install-Visual-Studio-6-0-on-Windows-10) were helpful.  I just had the Visual C++ 6.0 ISO instead of the full Visual Studio.
 
 For service pack 6, acquire `Vs6sp6.exe` (mine had a SHA256 of `7fa1d1778824b55a5fceb02f45c399b5d4e4dce7403661e67e587b5f455edbf3`).
 
